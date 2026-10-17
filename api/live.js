@@ -1,19 +1,17 @@
+import { headers } from '../lib/kisailu.js';
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
   const { eventId, gameIds } = req.body || {};
-  if (!eventId || !Array.isArray(gameIds) || !gameIds.length) return res.status(400).json({ error: 'eventId and gameIds required' });
-  const headers = {
-    'content-type': 'application/json',
-    'langcode': 'fi',
-    'requestid': String(Date.now()),
-    'x-api-key': process.env.KISAILU_API_KEY || '',
-    'x-api-validation': process.env.KISAILU_API_VALIDATION || ''
-  };
-  if (process.env.KISAILU_AUTHORIZATION) headers.authorization = process.env.KISAILU_AUTHORIZATION;
+  if (!eventId || !/^EVE#[A-Za-z0-9_-]+$/.test(String(eventId))) return res.status(400).json({ error: 'Valid eventId required' });
+  const payload = { EventId: eventId };
+  if (Array.isArray(gameIds) && gameIds.length) {
+    payload.NumGames = gameIds.length;
+    payload.GameIds = gameIds;
+  }
   try {
     const upstream = await fetch('https://api.kisailu.net/game/getall', {
-      method: 'POST', headers,
-      body: JSON.stringify({ EventId: eventId, NumGames: gameIds.length, GameIds: gameIds })
+      method: 'POST', headers: headers(), body: JSON.stringify(payload)
     });
     const body = await upstream.text();
     res.setHeader('Cache-Control', 'no-store, max-age=0');
