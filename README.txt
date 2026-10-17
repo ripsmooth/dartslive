@@ -1,7 +1,7 @@
 KISAILU.NET DARTS LIVE OVERLAY – VERCEL
 
-Tämä on live-kytkennän pohjapaketti kilpailulle EVE#robgoc4, Synttärikisat Singelit AS.
-Grafiikka 650 x 120 px, läpinäkyvä tausta, päivitys 3 sekunnin välein.
+Tämä on Kisailu.netin live-darts-overlay. Grafiikka 650 x 120 px, läpinäkyvä tausta, tulosten päivitys 3 sekunnin välein.
+Ohjauspaneelissa voi hakea valitun päivän kaikki tapahtumat, valita kilpailun/sarjan ja sen ottelun. Ottelut haetaan eventId-tunnisteella game/getall-rajapinnasta.
 
 JULKAISU
 1. Lataa kansion sisältö GitHub-repositorioon ja yhdistä repo Verceliin (Root Directory = projektin juuri).
@@ -15,7 +15,10 @@ JULKAISU
 
 TÄRKEÄÄ
 - Älä laita avaimia HTML:ään tai games.json-tiedostoon. Säilytä ne vain Vercelin Environment Variables -asetuksissa.
-- Paketin games.json perustuu käyttäjän toimittamaan tapahtuma- ja game/getall-vastaukseen. Ottelun valinta/automaattivalinta käyttää status-arvoja, mutta Kisailun statuskoodien tarkka merkitys on varmistettava käytännössä.
+- api/events.js hakee valitun päivän tapahtumat event/all-rajapinnasta (Start, End, Forward, AllCollectionDates).
+- api/event.js hakee tapahtuman tiedot ja pelaajanimet.
+- api/live.js hakee valitun tapahtuman kaikki ottelut payloadilla {"EventId":"EVE#..."}; yksittäisiä GameIds-arvoja ei vaadita.
+- Ottelun valinta/automaattivalinta käyttää status-arvoja, mutta Kisailun statuskoodien tarkka merkitys on varmistettava käytännössä.
 - Live-score tulkitaan stats[].Darts.LegScores / LegPoints -kentistä. Jos rajapinnan tulkinta poikkeaa, tarkista tulostaulun lukemat ensimmäisessä käynnissä olevassa pelissä.
 - API voi edellyttää Authorization-arvoa. Jos x-api-key tai validation-arvot ovat aidosti salaisia ja ne on jaettu aiemmin julkisesti, vaihda/kierrätä ne Kisailun hallinnassa, jos mahdollista.
 
