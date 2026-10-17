@@ -6,11 +6,11 @@
       "id": 0,
       "gameId": "GAM#Y9dBfwHvjuWswYaiEj8NVDobgoc4000",
       "players": [
-        -1,
+        23,
         30
       ],
       "names": [
-        "",
+        "Ilari Ahtonen",
         "X"
       ],
       "round": "A1",
@@ -18,7 +18,7 @@
         501,
         501
       ],
-      "status": 0,
+      "status": 4,
       "wins": [
         0,
         0
@@ -32,19 +32,19 @@
       "id": 1,
       "gameId": "GAM#PNBNpcMCHnduXycmoWi5s2obgoc4001",
       "players": [
-        -1,
-        -1
+        26,
+        7
       ],
       "names": [
-        "",
-        ""
+        "Uula Korkalainen",
+        "Heikki Hartikainen"
       ],
       "round": "A1",
       "startScores": [
         501,
         501
       ],
-      "status": 0,
+      "status": 2,
       "wins": [
         0,
         0
@@ -58,11 +58,11 @@
       "id": 2,
       "gameId": "GAM#fiKNDD6gFvBXJuhrtynyp3obgoc4002",
       "players": [
-        -1,
+        10,
         30
       ],
       "names": [
-        "",
+        "Jani Sorjonen",
         "X"
       ],
       "round": "A1",
@@ -70,7 +70,7 @@
         501,
         501
       ],
-      "status": 0,
+      "status": 4,
       "wins": [
         0,
         0
@@ -84,11 +84,11 @@
       "id": 3,
       "gameId": "GAM#2zcy9GmNd6h7mN3hRt5YEPobgoc4003",
       "players": [
-        -1,
+        15,
         30
       ],
       "names": [
-        "",
+        "Toni Uotinen",
         "X"
       ],
       "round": "A1",
@@ -96,7 +96,7 @@
         501,
         501
       ],
-      "status": 0,
+      "status": 4,
       "wins": [
         0,
         0
@@ -110,11 +110,11 @@
       "id": 4,
       "gameId": "GAM#j5x7fERmbdaqJnhngtFByaobgoc4004",
       "players": [
-        -1,
+        20,
         30
       ],
       "names": [
-        "",
+        "Angelo Maas",
         "X"
       ],
       "round": "A1",
@@ -122,7 +122,7 @@
         501,
         501
       ],
-      "status": 0,
+      "status": 4,
       "wins": [
         0,
         0
@@ -136,11 +136,11 @@
       "id": 5,
       "gameId": "GAM#F3vVoAFPDKmSTRzC4FmKNBobgoc4005",
       "players": [
-        -1,
+        0,
         30
       ],
       "names": [
-        "",
+        "Tatu Pehkonen",
         "X"
       ],
       "round": "A1",
@@ -148,7 +148,7 @@
         501,
         501
       ],
-      "status": 0,
+      "status": 4,
       "wins": [
         0,
         0
@@ -162,11 +162,11 @@
       "id": 6,
       "gameId": "GAM#ibW9kzZCnJfonXhKqtNAXcobgoc4006",
       "players": [
-        -1,
+        4,
         30
       ],
       "names": [
-        "",
+        "Eetu Korpinen",
         "X"
       ],
       "round": "A1",
@@ -174,7 +174,7 @@
         501,
         501
       ],
-      "status": 0,
+      "status": 4,
       "wins": [
         0,
         0
@@ -188,11 +188,11 @@
       "id": 7,
       "gameId": "GAM#7Pas6iFHFa9N3gZE3Bu5U9obgoc4007",
       "players": [
-        -1,
+        6,
         30
       ],
       "names": [
-        "",
+        "Tomi Koponen",
         "X"
       ],
       "round": "A1",
@@ -200,7 +200,7 @@
         501,
         501
       ],
-      "status": 0,
+      "status": 4,
       "wins": [
         0,
         0
@@ -214,11 +214,11 @@
       "id": 8,
       "gameId": "GAM#9AiFbGLpvmnPhLxq3RSF6zobgoc4008",
       "players": [
-        -1,
+        1,
         30
       ],
       "names": [
-        "",
+        "Jari Sormunen",
         "X"
       ],
       "round": "A1",
@@ -226,7 +226,7 @@
         501,
         501
       ],
-      "status": 0,
+      "status": 4,
       "wins": [
         0,
         0
@@ -240,19 +240,19 @@
       "id": 9,
       "gameId": "GAM#TENstrUjhYpTsq3bLbW9ezobgoc4009",
       "players": [
-        -1,
-        -1
+        27,
+        18
       ],
       "names": [
-        "",
-        ""
+        "Iisakki Soininen",
+        "Ville Laakkonen"
       ],
       "round": "A1",
       "startScores": [
         501,
         501
       ],
-      "status": 0,
+      "status": 2,
       "wins": [
         0,
         0
@@ -266,11 +266,11 @@
       "id": 10,
       "gameId": "GAM#JRJtRHQcdoRZzD2XJk759xobgoc4010",
       "players": [
-        -1,
+        17,
         30
       ],
       "names": [
-        "",
+        "Marko Gröhn",
         "X"
       ],
       "round": "A1",
@@ -278,7 +278,7 @@
         501,
         501
       ],
-      "status": 0,
+      "status": 4,
       "wins": [
         0,
         0
@@ -292,11 +292,11 @@
       "id": 11,
       "gameId": "GAM#VwZRcFsxd7iddE3pUmd6TQobgoc4011",
       "players": [
-        -1,
+        3,
         30
       ],
       "names": [
-        "",
+        "Sulo Suhonen",
         "X"
       ],
       "round": "A1",
@@ -304,7 +304,7 @@
         501,
         501
       ],
-      "status": 0,
+      "status": 4,
       "wins": [
         0,
         0
@@ -318,11 +318,11 @@
       "id": 12,
       "gameId": "GAM#WSCzLLSYtc7S6ZGrjdHSywobgoc4012",
       "players": [
-        -1,
+        2,
         30
       ],
       "names": [
-        "",
+        "Toni Niskanen",
         "X"
       ],
       "round": "A1",
@@ -330,7 +330,7 @@
         501,
         501
       ],
-      "status": 0,
+      "status": 4,
       "wins": [
         0,
         0
@@ -344,11 +344,11 @@
       "id": 13,
       "gameId": "GAM#745Stq3nsumJRzDVji79Ehobgoc4013",
       "players": [
-        -1,
+        22,
         30
       ],
       "names": [
-        "",
+        "Jerry Merivuori",
         "X"
       ],
       "round": "A1",
@@ -356,7 +356,7 @@
         501,
         501
       ],
-      "status": 0,
+      "status": 4,
       "wins": [
         0,
         0
@@ -370,11 +370,11 @@
       "id": 14,
       "gameId": "GAM#9LoHPvQbjuHgwDHJoeK8oAobgoc4014",
       "players": [
-        -1,
+        5,
         30
       ],
       "names": [
-        "",
+        "Kari Saukkonen",
         "X"
       ],
       "round": "A1",
@@ -382,7 +382,7 @@
         501,
         501
       ],
-      "status": 0,
+      "status": 4,
       "wins": [
         0,
         0
@@ -396,11 +396,11 @@
       "id": 15,
       "gameId": "GAM#7CA9kqcHNGQ4w7LPVHiaHHobgoc4015",
       "players": [
-        -1,
+        13,
         30
       ],
       "names": [
-        "",
+        "Timo Truhponen",
         "X"
       ],
       "round": "A1",
@@ -408,7 +408,7 @@
         501,
         501
       ],
-      "status": 0,
+      "status": 4,
       "wins": [
         0,
         0
@@ -422,11 +422,11 @@
       "id": 16,
       "gameId": "GAM#VJxGruAHvSG7och55BAjEPobgoc4016",
       "players": [
-        -1,
+        23,
         -1
       ],
       "names": [
-        "",
+        "Ilari Ahtonen",
         ""
       ],
       "round": "A2",
@@ -448,19 +448,19 @@
       "id": 17,
       "gameId": "GAM#T3PthHRGkfeYDWiGbo74NNobgoc4017",
       "players": [
-        -1,
-        -1
+        10,
+        15
       ],
       "names": [
-        "",
-        ""
+        "Jani Sorjonen",
+        "Toni Uotinen"
       ],
       "round": "A2",
       "startScores": [
         501,
         501
       ],
-      "status": 0,
+      "status": 1,
       "wins": [
         0,
         0
@@ -474,19 +474,19 @@
       "id": 18,
       "gameId": "GAM#iSPzY2DtgFs8nHLoomd3qeobgoc4018",
       "players": [
-        -1,
-        -1
+        20,
+        0
       ],
       "names": [
-        "",
-        ""
+        "Angelo Maas",
+        "Tatu Pehkonen"
       ],
       "round": "A2",
       "startScores": [
         501,
         501
       ],
-      "status": 0,
+      "status": 1,
       "wins": [
         0,
         0
@@ -500,19 +500,19 @@
       "id": 19,
       "gameId": "GAM#EPvfcwcmiuyDcxcg3CSjdAobgoc4019",
       "players": [
-        -1,
-        -1
+        4,
+        6
       ],
       "names": [
-        "",
-        ""
+        "Eetu Korpinen",
+        "Tomi Koponen"
       ],
       "round": "A2",
       "startScores": [
         501,
         501
       ],
-      "status": 0,
+      "status": 1,
       "wins": [
         0,
         0
@@ -526,11 +526,11 @@
       "id": 20,
       "gameId": "GAM#iAX9rbuhXw8GpjVo7xfDauobgoc4020",
       "players": [
-        -1,
+        1,
         -1
       ],
       "names": [
-        "",
+        "Jari Sormunen",
         ""
       ],
       "round": "A2",
@@ -552,19 +552,19 @@
       "id": 21,
       "gameId": "GAM#c9BZhWvqf5drMarrHMdSPbobgoc4021",
       "players": [
-        -1,
-        -1
+        17,
+        3
       ],
       "names": [
-        "",
-        ""
+        "Marko Gröhn",
+        "Sulo Suhonen"
       ],
       "round": "A2",
       "startScores": [
         501,
         501
       ],
-      "status": 0,
+      "status": 1,
       "wins": [
         0,
         0
@@ -578,19 +578,19 @@
       "id": 22,
       "gameId": "GAM#ktrTX5hrr4veot8YG5NAV6obgoc4022",
       "players": [
-        -1,
-        -1
+        2,
+        22
       ],
       "names": [
-        "",
-        ""
+        "Toni Niskanen",
+        "Jerry Merivuori"
       ],
       "round": "A2",
       "startScores": [
         501,
         501
       ],
-      "status": 0,
+      "status": 1,
       "wins": [
         0,
         0
@@ -604,19 +604,19 @@
       "id": 23,
       "gameId": "GAM#cDYPkfKGkbEiLGYWEnLcNmobgoc4023",
       "players": [
-        -1,
-        -1
+        5,
+        13
       ],
       "names": [
-        "",
-        ""
+        "Kari Saukkonen",
+        "Timo Truhponen"
       ],
       "round": "A2",
       "startScores": [
         501,
         501
       ],
-      "status": 0,
+      "status": 1,
       "wins": [
         0,
         0
@@ -902,14 +902,14 @@
         501,
         501
       ],
-      "status": 2,
+      "status": 4,
       "wins": [
         0,
-        1
+        2
       ],
       "sets": [
         0,
-        0
+        1
       ]
     },
     {
@@ -1006,13 +1006,13 @@
         501,
         501
       ],
-      "status": 1,
+      "status": 4,
       "wins": [
-        0,
-        0
+        2,
+        1
       ],
       "sets": [
-        0,
+        1,
         0
       ]
     },
@@ -1058,13 +1058,13 @@
         501,
         501
       ],
-      "status": 1,
+      "status": 4,
       "wins": [
-        0,
-        0
+        2,
+        1
       ],
       "sets": [
-        0,
+        1,
         0
       ]
     },
@@ -1292,13 +1292,13 @@
         501,
         501
       ],
-      "status": 2,
+      "status": 4,
       "wins": [
-        1,
-        0
+        2,
+        1
       ],
       "sets": [
-        0,
+        1,
         0
       ]
     },
@@ -1318,14 +1318,14 @@
         501,
         501
       ],
-      "status": 1,
+      "status": 4,
       "wins": [
         0,
-        0
+        2
       ],
       "sets": [
         0,
-        0
+        1
       ]
     },
     {
@@ -1370,13 +1370,13 @@
         501,
         501
       ],
-      "status": 2,
+      "status": 4,
       "wins": [
-        1,
+        2,
         0
       ],
       "sets": [
-        0,
+        1,
         0
       ]
     },
@@ -1448,14 +1448,14 @@
         501,
         501
       ],
-      "status": 1,
+      "status": 4,
       "wins": [
-        0,
-        0
+        1,
+        2
       ],
       "sets": [
         0,
-        0
+        1
       ]
     },
     {
@@ -1474,14 +1474,14 @@
         501,
         501
       ],
-      "status": 1,
+      "status": 4,
       "wins": [
         0,
-        0
+        2
       ],
       "sets": [
         0,
-        0
+        1
       ]
     },
     {
@@ -1526,14 +1526,14 @@
         501,
         501
       ],
-      "status": 1,
+      "status": 4,
       "wins": [
-        0,
-        0
+        1,
+        2
       ],
       "sets": [
         0,
-        0
+        1
       ]
     },
     {
@@ -1552,14 +1552,14 @@
         501,
         501
       ],
-      "status": 1,
+      "status": 4,
       "wins": [
         0,
-        0
+        2
       ],
       "sets": [
         0,
-        0
+        1
       ]
     },
     {
@@ -1578,13 +1578,13 @@
         501,
         501
       ],
-      "status": 1,
+      "status": 4,
       "wins": [
-        0,
-        0
+        2,
+        1
       ],
       "sets": [
-        0,
+        1,
         0
       ]
     },
@@ -1786,14 +1786,14 @@
         501,
         501
       ],
-      "status": 1,
+      "status": 4,
       "wins": [
         0,
-        0
+        2
       ],
       "sets": [
         0,
-        0
+        1
       ]
     },
     {
@@ -1812,13 +1812,13 @@
         501,
         501
       ],
-      "status": 1,
+      "status": 4,
       "wins": [
-        0,
+        2,
         0
       ],
       "sets": [
-        0,
+        1,
         0
       ]
     },
@@ -1838,14 +1838,14 @@
         501,
         501
       ],
-      "status": 1,
+      "status": 4,
       "wins": [
-        0,
-        0
+        1,
+        2
       ],
       "sets": [
         0,
-        0
+        1
       ]
     },
     {
@@ -2046,13 +2046,13 @@
         501,
         501
       ],
-      "status": 2,
+      "status": 4,
       "wins": [
-        0,
+        2,
         0
       ],
       "sets": [
-        0,
+        1,
         0
       ]
     },
@@ -2072,14 +2072,14 @@
         501,
         501
       ],
-      "status": 1,
+      "status": 4,
       "wins": [
-        0,
-        0
+        1,
+        2
       ],
       "sets": [
         0,
-        0
+        1
       ]
     },
     {
@@ -2098,14 +2098,14 @@
         501,
         501
       ],
-      "status": 1,
+      "status": 4,
       "wins": [
         0,
-        0
+        2
       ],
       "sets": [
         0,
-        0
+        1
       ]
     },
     {
@@ -2332,13 +2332,13 @@
         501,
         501
       ],
-      "status": 2,
+      "status": 4,
       "wins": [
-        0,
+        2,
         0
       ],
       "sets": [
-        0,
+        1,
         0
       ]
     },

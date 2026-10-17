@@ -18,3 +18,5 @@ TÄRKEÄÄ
 - Paketin games.json perustuu käyttäjän toimittamaan tapahtuma- ja game/getall-vastaukseen. Ottelun valinta/automaattivalinta käyttää status-arvoja, mutta Kisailun statuskoodien tarkka merkitys on varmistettava käytännössä.
 - Live-score tulkitaan stats[].Darts.LegScores / LegPoints -kentistä. Jos rajapinnan tulkinta poikkeaa, tarkista tulostaulun lukemat ensimmäisessä käynnissä olevassa pelissä.
 - API voi edellyttää Authorization-arvoa. Jos x-api-key tai validation-arvot ovat aidosti salaisia ja ne on jaettu aiemmin julkisesti, vaihda/kierrätä ne Kisailun hallinnassa, jos mahdollista.
+
+Korjaus: games.json sisältää Kisailun oikeat GameId-arvot (GAM#...), ja overlay valitsee API-vastauksesta ulomman Id-kentän perusteella. Pisteet luetaan GameData.scores-taulukosta.
