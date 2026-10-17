@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
   const { eventId, gameIds } = req.body || {};
   if (!eventId || !/^EVE#[A-Za-z0-9_-]+$/.test(String(eventId))) return res.status(400).json({ error: 'Valid eventId required' });
-  const payload = { EventId: eventId };
+  const payload = { Reverse: eventId };
   if (Array.isArray(gameIds) && gameIds.length) {
     payload.NumGames = gameIds.length;
     payload.GameIds = gameIds;
