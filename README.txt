@@ -41,3 +41,6 @@ RAJOITUKSET
 - GitHub API:n käyttörajat ja tallennuksen viive koskevat ohjausvalintaa, eivät suoraan live-tuloskyselyä.
 - 2 sekunnin kyselyväli ei takaa, että Kisailu.netin taustajärjestelmä päivittää tiedon kahdessa sekunnissa; se määrittää vain tämän overlayn kyselytiheyden.
 - Testisivun getscore/getmatch payloadit pitää tarvittaessa sovittaa todelliseen Kisailu API -pyyntöön selaimen Network-välilehdeltä.
+
+
+OTTELULISTAN SAILYMINEN (korjaus): game/getall palauttaa GameData-kentän XOR-koodattuna. Overlay purkaa sen Id-kentän avulla ja näyttää myös päättyneet ottelut valintalistassa. Automaattitila valitsee ensin pelaajilla täytetyn ottelun, jolla ei ole EndTime-arvoa; jos sellaisia ei ole, se näyttää viimeisimmän oikeilla pelaajilla pelatun ottelun. API-pyyntö käyttää Reverse-kenttää (EVE#...).
