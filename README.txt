@@ -2,7 +2,7 @@ KISAILU.NET DARTS LIVE OVERLAY – VERCEL + GITHUB JSON
 
 Sisältö:
 - darts-tv-overlay.html: läpinäkyvä 650 x 120 OBS-tulostaulu. Kisailu.netin live-tiedot haetaan 2 sekunnin välein.
-- darts-ohjaus.html: erillinen ohjauspaneeli, toimii toisella laitteella.
+- index.html: erillinen ohjauspaneeli, toimii toisella laitteella.
 - darts-api-testi.html: automaattinen getscore/getmatch/getall-testi; mittaa vasteajat, kirjaa vastauksen sisältömuutokset ja vie CSV/JSON.
 - api/state.js: tallentaa valinnan GitHub-repositorion JSON-tiedostoon GitHub Contents API:n avulla.
 - api/probe.js: turvallinen välityspalvelin sallittuihin Kisailu-testi-endpointteihin.
@@ -27,8 +27,8 @@ KÄYTTÖÖNOTTO
 1. Kopioi tämän kansion sisältö GitHub-repositorioon, joka on yhdistetty Verceliin.
 2. Lisää yllä olevat ympäristömuuttujat Vercelin Project Settings > Environment Variables.
 3. Tee Redeploy.
-4. Ohjauspaneeli: https://OMA-PROJEKTI.vercel.app/darts-ohjaus.html
-5. OBS Browser Source: https://OMA-PROJEKTI.vercel.app/darts-tv-overlay.html?controls=0 (650 x 120).
+4. Ohjauspaneeli: https://OMA-PROJEKTI.vercel.app/index.html
+5. OBS Browser Source: https://OMA-PROJEKTI.vercel.app/darts-tv-overlay.html?controls=0. Set Browser Source width/height to the full OBS canvas (e.g. 1920 x 1080); the 650 x 123 scoreboard is positioned 50 px from the right and bottom edges. The overlay page has no visible selection controls.
 6. API-testi: https://OMA-PROJEKTI.vercel.app/darts-api-testi.html
 
 GITHUB JSON -TALLENNUS
