@@ -1,9 +1,13 @@
-DARTS TV OVERLAY v2
-- darts-tv-overlay.html: 650x120 OBS-tulostaulu ja otteluvalintapaneeli
-- matches.json: Presörin perjantai -kilpailun EVE#nalvuw9 63 pelin tallennettu lista
+DARTS TV KISAILU - OVERLAY
+
+Sisältö:
+- darts-tv-overlay.html: 650 x 120 px TV-tyylinen tulostaulu + ohjauspaneeli
+- matches.json: ladattujen Kisailu.net-aineistojen yhdistetty ottelu- ja pelaajalista
+
 Käyttö:
-1. Pura ZIP samaan kansioon.
-2. Suositus: julkaise molemmat tiedostot samalla staattisella hostilla (GitHub Pages/Vercel).
-3. Avaa darts-tv-overlay.html ohjauspaneelissa, valitse ottelu pudotusvalikosta.
-4. OBS Browser Source: osoite overlay-sivuun?controls=0, koko 650x120.
-TÄRKEÄÄ: ottelulista perustuu tallennettuun aineistoon. Reaaliaikainen API-haku ei ole tässä paketissa vielä kytketty, koska getall-pyynnön tarkka payload ja kilpailun pelaajanimien endpoint pitää vahvistaa onnistuneesta Network-pyynnöstä. Ohjauspaneelin manuaaliset kentät toimivat.
+1. Julkaise tiedostot samalla staattisella hostilla (esim. GitHub Pages tai Vercel).
+2. Ohjauspaneeli: avaa darts-tv-overlay.html ja valitse ottelu.
+3. OBS Browser Source: käytä osoitetta darts-tv-overlay.html?controls=0, leveys 650, korkeus 120.
+4. Tausta on läpinäkyvä OBS:n ympäriltä. Grafiikan sisäinen pohja on tumma, korostukset keltaiset ja vihreät.
+
+TÄRKEÄÄ: tämä paketti yhdistää toimitetut tapahtuma- ja game/getall JSON-snapshotit. Se ei vielä hae automaattisesti Kisailu.netin API:sta. Ladatuissa game/getall-tiedoissa monien otteluiden pelaajaindeksit ovat -1 ja osa tuloskentistä puuttuu, joten nimet/pisteet voi tarvittaessa korjata ohjauspaneelissa. Automaattista API-yhteyttä ei pidä merkitä toimivaksi ennen kuin selaimen Network-välilehdeltä on varmistettu pyyntömetodi, payload ja CORS/evästevaatimukset.
