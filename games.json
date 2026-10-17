@@ -1,0 +1,2405 @@
+{
+  "eventId": "EVE#robgoc4",
+  "title": "Synttärikisat Singelit AS",
+  "games": [
+    {
+      "id": 0,
+      "gameId": "GAM#robgoc40",
+      "players": [
+        -1,
+        30
+      ],
+      "names": [
+        "",
+        "X"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1,
+      "gameId": "GAM#robgoc41",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "gameId": "GAM#robgoc42",
+      "players": [
+        -1,
+        30
+      ],
+      "names": [
+        "",
+        "X"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 3,
+      "gameId": "GAM#robgoc43",
+      "players": [
+        -1,
+        30
+      ],
+      "names": [
+        "",
+        "X"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 4,
+      "gameId": "GAM#robgoc44",
+      "players": [
+        -1,
+        30
+      ],
+      "names": [
+        "",
+        "X"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 5,
+      "gameId": "GAM#robgoc45",
+      "players": [
+        -1,
+        30
+      ],
+      "names": [
+        "",
+        "X"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 6,
+      "gameId": "GAM#robgoc46",
+      "players": [
+        -1,
+        30
+      ],
+      "names": [
+        "",
+        "X"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 7,
+      "gameId": "GAM#robgoc47",
+      "players": [
+        -1,
+        30
+      ],
+      "names": [
+        "",
+        "X"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 8,
+      "gameId": "GAM#robgoc48",
+      "players": [
+        -1,
+        30
+      ],
+      "names": [
+        "",
+        "X"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 9,
+      "gameId": "GAM#robgoc49",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 10,
+      "gameId": "GAM#robgoc410",
+      "players": [
+        -1,
+        30
+      ],
+      "names": [
+        "",
+        "X"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 11,
+      "gameId": "GAM#robgoc411",
+      "players": [
+        -1,
+        30
+      ],
+      "names": [
+        "",
+        "X"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 12,
+      "gameId": "GAM#robgoc412",
+      "players": [
+        -1,
+        30
+      ],
+      "names": [
+        "",
+        "X"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 13,
+      "gameId": "GAM#robgoc413",
+      "players": [
+        -1,
+        30
+      ],
+      "names": [
+        "",
+        "X"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 14,
+      "gameId": "GAM#robgoc414",
+      "players": [
+        -1,
+        30
+      ],
+      "names": [
+        "",
+        "X"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 15,
+      "gameId": "GAM#robgoc415",
+      "players": [
+        -1,
+        30
+      ],
+      "names": [
+        "",
+        "X"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 16,
+      "gameId": "GAM#robgoc416",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 17,
+      "gameId": "GAM#robgoc417",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 18,
+      "gameId": "GAM#robgoc418",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 19,
+      "gameId": "GAM#robgoc419",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 20,
+      "gameId": "GAM#robgoc420",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 21,
+      "gameId": "GAM#robgoc421",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 22,
+      "gameId": "GAM#robgoc422",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 23,
+      "gameId": "GAM#robgoc423",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 24,
+      "gameId": "GAM#robgoc424",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "AQF",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 25,
+      "gameId": "GAM#robgoc425",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "AQF",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 26,
+      "gameId": "GAM#robgoc426",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "AQF",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 27,
+      "gameId": "GAM#robgoc427",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "AQF",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 28,
+      "gameId": "GAM#robgoc428",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "ASF",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 29,
+      "gameId": "GAM#robgoc429",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "ASF",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 30,
+      "gameId": "GAM#robgoc430",
+      "players": [
+        -1,
+        -1
+      ],
+      "names": [
+        "",
+        ""
+      ],
+      "round": "AF",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 0,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 31,
+      "gameId": "GAM#robgoc431",
+      "players": [
+        0,
+        11
+      ],
+      "names": [
+        "Tatu Pehkonen",
+        "Jarmo Merivuori"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 32,
+      "gameId": "GAM#robgoc432",
+      "players": [
+        17,
+        23
+      ],
+      "names": [
+        "Marko Gröhn",
+        "Ilari Ahtonen"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        1,
+        2
+      ],
+      "sets": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 33,
+      "gameId": "GAM#robgoc433",
+      "players": [
+        0,
+        29
+      ],
+      "names": [
+        "Tatu Pehkonen",
+        "Lenni Hartikainen"
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 34,
+      "gameId": "GAM#robgoc434",
+      "players": [
+        11,
+        23
+      ],
+      "names": [
+        "Jarmo Merivuori",
+        "Ilari Ahtonen"
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 2,
+      "wins": [
+        0,
+        1
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 35,
+      "gameId": "GAM#robgoc435",
+      "players": [
+        0,
+        17
+      ],
+      "names": [
+        "Tatu Pehkonen",
+        "Marko Gröhn"
+      ],
+      "round": "A3",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        1,
+        2
+      ],
+      "sets": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 36,
+      "gameId": "GAM#robgoc436",
+      "players": [
+        11,
+        29
+      ],
+      "names": [
+        "Jarmo Merivuori",
+        "Lenni Hartikainen"
+      ],
+      "round": "A3",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        0,
+        2
+      ],
+      "sets": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 37,
+      "gameId": "GAM#robgoc437",
+      "players": [
+        0,
+        23
+      ],
+      "names": [
+        "Tatu Pehkonen",
+        "Ilari Ahtonen"
+      ],
+      "round": "A4",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        1,
+        2
+      ],
+      "sets": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 38,
+      "gameId": "GAM#robgoc438",
+      "players": [
+        17,
+        29
+      ],
+      "names": [
+        "Marko Gröhn",
+        "Lenni Hartikainen"
+      ],
+      "round": "A4",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 1,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 39,
+      "gameId": "GAM#robgoc439",
+      "players": [
+        11,
+        17
+      ],
+      "names": [
+        "Jarmo Merivuori",
+        "Marko Gröhn"
+      ],
+      "round": "A5",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        0,
+        2
+      ],
+      "sets": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 40,
+      "gameId": "GAM#robgoc440",
+      "players": [
+        23,
+        29
+      ],
+      "names": [
+        "Ilari Ahtonen",
+        "Lenni Hartikainen"
+      ],
+      "round": "A5",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 1,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 41,
+      "gameId": "GAM#robgoc441",
+      "players": [
+        1,
+        10
+      ],
+      "names": [
+        "Jari Sormunen",
+        "Jani Sorjonen"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        1,
+        2
+      ],
+      "sets": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 42,
+      "gameId": "GAM#robgoc442",
+      "players": [
+        16,
+        22
+      ],
+      "names": [
+        "Juhani Hiltunen",
+        "Jerry Merivuori"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        1,
+        2
+      ],
+      "sets": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 43,
+      "gameId": "GAM#robgoc443",
+      "players": [
+        1,
+        28
+      ],
+      "names": [
+        "Jari Sormunen",
+        "Sami Ignatius"
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 44,
+      "gameId": "GAM#robgoc444",
+      "players": [
+        10,
+        22
+      ],
+      "names": [
+        "Jani Sorjonen",
+        "Jerry Merivuori"
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        1,
+        2
+      ],
+      "sets": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 45,
+      "gameId": "GAM#robgoc445",
+      "players": [
+        1,
+        16
+      ],
+      "names": [
+        "Jari Sormunen",
+        "Juhani Hiltunen"
+      ],
+      "round": "A3",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 46,
+      "gameId": "GAM#robgoc446",
+      "players": [
+        10,
+        28
+      ],
+      "names": [
+        "Jani Sorjonen",
+        "Sami Ignatius"
+      ],
+      "round": "A3",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 47,
+      "gameId": "GAM#robgoc447",
+      "players": [
+        1,
+        22
+      ],
+      "names": [
+        "Jari Sormunen",
+        "Jerry Merivuori"
+      ],
+      "round": "A4",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 48,
+      "gameId": "GAM#robgoc448",
+      "players": [
+        16,
+        28
+      ],
+      "names": [
+        "Juhani Hiltunen",
+        "Sami Ignatius"
+      ],
+      "round": "A4",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 49,
+      "gameId": "GAM#robgoc449",
+      "players": [
+        10,
+        16
+      ],
+      "names": [
+        "Jani Sorjonen",
+        "Juhani Hiltunen"
+      ],
+      "round": "A5",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 2,
+      "wins": [
+        1,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 50,
+      "gameId": "GAM#robgoc450",
+      "players": [
+        22,
+        28
+      ],
+      "names": [
+        "Jerry Merivuori",
+        "Sami Ignatius"
+      ],
+      "round": "A5",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 1,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 51,
+      "gameId": "GAM#robgoc451",
+      "players": [
+        2,
+        9
+      ],
+      "names": [
+        "Toni Niskanen",
+        "Janne Auvinen"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 52,
+      "gameId": "GAM#robgoc452",
+      "players": [
+        15,
+        21
+      ],
+      "names": [
+        "Toni Uotinen",
+        "Tero Myllynen"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 2,
+      "wins": [
+        1,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 53,
+      "gameId": "GAM#robgoc453",
+      "players": [
+        2,
+        27
+      ],
+      "names": [
+        "Toni Niskanen",
+        "Iisakki Soininen"
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 54,
+      "gameId": "GAM#robgoc454",
+      "players": [
+        9,
+        21
+      ],
+      "names": [
+        "Janne Auvinen",
+        "Tero Myllynen"
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 55,
+      "gameId": "GAM#robgoc455",
+      "players": [
+        2,
+        15
+      ],
+      "names": [
+        "Toni Niskanen",
+        "Toni Uotinen"
+      ],
+      "round": "A3",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 1,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 56,
+      "gameId": "GAM#robgoc456",
+      "players": [
+        9,
+        27
+      ],
+      "names": [
+        "Janne Auvinen",
+        "Iisakki Soininen"
+      ],
+      "round": "A3",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 1,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 57,
+      "gameId": "GAM#robgoc457",
+      "players": [
+        2,
+        21
+      ],
+      "names": [
+        "Toni Niskanen",
+        "Tero Myllynen"
+      ],
+      "round": "A4",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 58,
+      "gameId": "GAM#robgoc458",
+      "players": [
+        15,
+        27
+      ],
+      "names": [
+        "Toni Uotinen",
+        "Iisakki Soininen"
+      ],
+      "round": "A4",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 1,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 59,
+      "gameId": "GAM#robgoc459",
+      "players": [
+        9,
+        15
+      ],
+      "names": [
+        "Janne Auvinen",
+        "Toni Uotinen"
+      ],
+      "round": "A5",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 1,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 60,
+      "gameId": "GAM#robgoc460",
+      "players": [
+        21,
+        27
+      ],
+      "names": [
+        "Tero Myllynen",
+        "Iisakki Soininen"
+      ],
+      "round": "A5",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 1,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 61,
+      "gameId": "GAM#robgoc461",
+      "players": [
+        3,
+        8
+      ],
+      "names": [
+        "Sulo Suhonen",
+        "Marko Alatalo"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        1
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 62,
+      "gameId": "GAM#robgoc462",
+      "players": [
+        14,
+        20
+      ],
+      "names": [
+        "Matti Sorjonen",
+        "Angelo Maas"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        0,
+        2
+      ],
+      "sets": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 63,
+      "gameId": "GAM#robgoc463",
+      "players": [
+        3,
+        26
+      ],
+      "names": [
+        "Sulo Suhonen",
+        "Uula Korkalainen"
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 64,
+      "gameId": "GAM#robgoc464",
+      "players": [
+        8,
+        20
+      ],
+      "names": [
+        "Marko Alatalo",
+        "Angelo Maas"
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        0,
+        2
+      ],
+      "sets": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 65,
+      "gameId": "GAM#robgoc465",
+      "players": [
+        3,
+        14
+      ],
+      "names": [
+        "Sulo Suhonen",
+        "Matti Sorjonen"
+      ],
+      "round": "A3",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 66,
+      "gameId": "GAM#robgoc466",
+      "players": [
+        8,
+        26
+      ],
+      "names": [
+        "Marko Alatalo",
+        "Uula Korkalainen"
+      ],
+      "round": "A3",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        0,
+        2
+      ],
+      "sets": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 67,
+      "gameId": "GAM#robgoc467",
+      "players": [
+        3,
+        20
+      ],
+      "names": [
+        "Sulo Suhonen",
+        "Angelo Maas"
+      ],
+      "round": "A4",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        0,
+        2
+      ],
+      "sets": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 68,
+      "gameId": "GAM#robgoc468",
+      "players": [
+        14,
+        26
+      ],
+      "names": [
+        "Matti Sorjonen",
+        "Uula Korkalainen"
+      ],
+      "round": "A4",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 1,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 69,
+      "gameId": "GAM#robgoc469",
+      "players": [
+        8,
+        14
+      ],
+      "names": [
+        "Marko Alatalo",
+        "Matti Sorjonen"
+      ],
+      "round": "A5",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 1,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 70,
+      "gameId": "GAM#robgoc470",
+      "players": [
+        20,
+        26
+      ],
+      "names": [
+        "Angelo Maas",
+        "Uula Korkalainen"
+      ],
+      "round": "A5",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 1,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 71,
+      "gameId": "GAM#robgoc471",
+      "players": [
+        4,
+        7
+      ],
+      "names": [
+        "Eetu Korpinen",
+        "Heikki Hartikainen"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 72,
+      "gameId": "GAM#robgoc472",
+      "players": [
+        13,
+        19
+      ],
+      "names": [
+        "Timo Truhponen",
+        "Harri Voutilainen"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 73,
+      "gameId": "GAM#robgoc473",
+      "players": [
+        4,
+        25
+      ],
+      "names": [
+        "Eetu Korpinen",
+        "Olli-Pekka Karhu"
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 74,
+      "gameId": "GAM#robgoc474",
+      "players": [
+        7,
+        19
+      ],
+      "names": [
+        "Heikki Hartikainen",
+        "Harri Voutilainen"
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 75,
+      "gameId": "GAM#robgoc475",
+      "players": [
+        4,
+        13
+      ],
+      "names": [
+        "Eetu Korpinen",
+        "Timo Truhponen"
+      ],
+      "round": "A3",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 76,
+      "gameId": "GAM#robgoc476",
+      "players": [
+        7,
+        25
+      ],
+      "names": [
+        "Heikki Hartikainen",
+        "Olli-Pekka Karhu"
+      ],
+      "round": "A3",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 77,
+      "gameId": "GAM#robgoc477",
+      "players": [
+        4,
+        19
+      ],
+      "names": [
+        "Eetu Korpinen",
+        "Harri Voutilainen"
+      ],
+      "round": "A4",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        1
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 78,
+      "gameId": "GAM#robgoc478",
+      "players": [
+        13,
+        25
+      ],
+      "names": [
+        "Timo Truhponen",
+        "Olli-Pekka Karhu"
+      ],
+      "round": "A4",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 2,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 79,
+      "gameId": "GAM#robgoc479",
+      "players": [
+        7,
+        13
+      ],
+      "names": [
+        "Heikki Hartikainen",
+        "Timo Truhponen"
+      ],
+      "round": "A5",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 1,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 80,
+      "gameId": "GAM#robgoc480",
+      "players": [
+        19,
+        25
+      ],
+      "names": [
+        "Harri Voutilainen",
+        "Olli-Pekka Karhu"
+      ],
+      "round": "A5",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 1,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 81,
+      "gameId": "GAM#robgoc481",
+      "players": [
+        5,
+        6
+      ],
+      "names": [
+        "Kari Saukkonen",
+        "Tomi Koponen"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 82,
+      "gameId": "GAM#robgoc482",
+      "players": [
+        12,
+        18
+      ],
+      "names": [
+        "Reijo Kortelainen",
+        "Ville Laakkonen"
+      ],
+      "round": "A1",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        0,
+        2
+      ],
+      "sets": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 83,
+      "gameId": "GAM#robgoc483",
+      "players": [
+        5,
+        24
+      ],
+      "names": [
+        "Kari Saukkonen",
+        "Pasi Viitamäki"
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 84,
+      "gameId": "GAM#robgoc484",
+      "players": [
+        6,
+        18
+      ],
+      "names": [
+        "Tomi Koponen",
+        "Ville Laakkonen"
+      ],
+      "round": "A2",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        1
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 85,
+      "gameId": "GAM#robgoc485",
+      "players": [
+        5,
+        12
+      ],
+      "names": [
+        "Kari Saukkonen",
+        "Reijo Kortelainen"
+      ],
+      "round": "A3",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 86,
+      "gameId": "GAM#robgoc486",
+      "players": [
+        6,
+        24
+      ],
+      "names": [
+        "Tomi Koponen",
+        "Pasi Viitamäki"
+      ],
+      "round": "A3",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 87,
+      "gameId": "GAM#robgoc487",
+      "players": [
+        5,
+        18
+      ],
+      "names": [
+        "Kari Saukkonen",
+        "Ville Laakkonen"
+      ],
+      "round": "A4",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        1
+      ],
+      "sets": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 88,
+      "gameId": "GAM#robgoc488",
+      "players": [
+        12,
+        24
+      ],
+      "names": [
+        "Reijo Kortelainen",
+        "Pasi Viitamäki"
+      ],
+      "round": "A4",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 89,
+      "gameId": "GAM#robgoc489",
+      "players": [
+        6,
+        12
+      ],
+      "names": [
+        "Tomi Koponen",
+        "Reijo Kortelainen"
+      ],
+      "round": "A5",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 2,
+      "wins": [
+        0,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 90,
+      "gameId": "GAM#robgoc490",
+      "players": [
+        18,
+        24
+      ],
+      "names": [
+        "Ville Laakkonen",
+        "Pasi Viitamäki"
+      ],
+      "round": "A5",
+      "startScores": [
+        501,
+        501
+      ],
+      "status": 4,
+      "wins": [
+        2,
+        0
+      ],
+      "sets": [
+        0,
+        0
+      ]
+    }
+  ],
+  "players": {
+    "0": "Tatu Pehkonen",
+    "1": "Jari Sormunen",
+    "2": "Toni Niskanen",
+    "3": "Sulo Suhonen",
+    "4": "Eetu Korpinen",
+    "5": "Kari Saukkonen",
+    "6": "Tomi Koponen",
+    "7": "Heikki Hartikainen",
+    "8": "Marko Alatalo",
+    "9": "Janne Auvinen",
+    "10": "Jani Sorjonen",
+    "11": "Jarmo Merivuori",
+    "12": "Reijo Kortelainen",
+    "13": "Timo Truhponen",
+    "14": "Matti Sorjonen",
+    "15": "Toni Uotinen",
+    "16": "Juhani Hiltunen",
+    "17": "Marko Gröhn",
+    "18": "Ville Laakkonen",
+    "19": "Harri Voutilainen",
+    "20": "Angelo Maas",
+    "21": "Tero Myllynen",
+    "22": "Jerry Merivuori",
+    "23": "Ilari Ahtonen",
+    "24": "Pasi Viitamäki",
+    "25": "Olli-Pekka Karhu",
+    "26": "Uula Korkalainen",
+    "27": "Iisakki Soininen",
+    "28": "Sami Ignatius",
+    "29": "Lenni Hartikainen",
+    "30": "X"
+  }
+}

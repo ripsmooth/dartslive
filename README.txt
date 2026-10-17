@@ -1,13 +1,20 @@
-DARTS TV KISAILU - OVERLAY
+KISAILU.NET DARTS LIVE OVERLAY – VERCEL
 
-Sisältö:
-- darts-tv-overlay.html: 650 x 120 px TV-tyylinen tulostaulu + ohjauspaneeli
-- matches.json: ladattujen Kisailu.net-aineistojen yhdistetty ottelu- ja pelaajalista
+Tämä on live-kytkennän pohjapaketti kilpailulle EVE#robgoc4, Synttärikisat Singelit AS.
+Grafiikka 650 x 120 px, läpinäkyvä tausta, päivitys 3 sekunnin välein.
 
-Käyttö:
-1. Julkaise tiedostot samalla staattisella hostilla (esim. GitHub Pages tai Vercel).
-2. Ohjauspaneeli: avaa darts-tv-overlay.html ja valitse ottelu.
-3. OBS Browser Source: käytä osoitetta darts-tv-overlay.html?controls=0, leveys 650, korkeus 120.
-4. Tausta on läpinäkyvä OBS:n ympäriltä. Grafiikan sisäinen pohja on tumma, korostukset keltaiset ja vihreät.
+JULKAISU
+1. Lataa kansion sisältö GitHub-repositorioon ja yhdistä repo Verceliin (Root Directory = projektin juuri).
+2. Lisää Vercelin Project Settings > Environment Variables -kohtaan:
+   KISAILU_API_KEY       = Kisailu-pyynnön x-api-key-arvo
+   KISAILU_API_VALIDATION = Kisailu-pyynnön x-api-validation-arvo
+   KISAILU_AUTHORIZATION  = vain jos alkuperäinen pyyntö oikeasti tarvitsee Authorization-otsakkeen; käytä arvoa täsmälleen sellaisena kuin onnistuneessa Network-pyynnössä.
+3. Redeploy projekti.
+4. Avaa ohjauspaneeli: https://OMA-PROJEKTI.vercel.app/darts-tv-overlay.html
+5. Lisää OBS:ään Browser Source samalla osoitteella ja perään ?controls=0. Leveys 650, korkeus 120.
 
-TÄRKEÄÄ: tämä paketti yhdistää toimitetut tapahtuma- ja game/getall JSON-snapshotit. Se ei vielä hae automaattisesti Kisailu.netin API:sta. Ladatuissa game/getall-tiedoissa monien otteluiden pelaajaindeksit ovat -1 ja osa tuloskentistä puuttuu, joten nimet/pisteet voi tarvittaessa korjata ohjauspaneelissa. Automaattista API-yhteyttä ei pidä merkitä toimivaksi ennen kuin selaimen Network-välilehdeltä on varmistettu pyyntömetodi, payload ja CORS/evästevaatimukset.
+TÄRKEÄÄ
+- Älä laita avaimia HTML:ään tai games.json-tiedostoon. Säilytä ne vain Vercelin Environment Variables -asetuksissa.
+- Paketin games.json perustuu käyttäjän toimittamaan tapahtuma- ja game/getall-vastaukseen. Ottelun valinta/automaattivalinta käyttää status-arvoja, mutta Kisailun statuskoodien tarkka merkitys on varmistettava käytännössä.
+- Live-score tulkitaan stats[].Darts.LegScores / LegPoints -kentistä. Jos rajapinnan tulkinta poikkeaa, tarkista tulostaulun lukemat ensimmäisessä käynnissä olevassa pelissä.
+- API voi edellyttää Authorization-arvoa. Jos x-api-key tai validation-arvot ovat aidosti salaisia ja ne on jaettu aiemmin julkisesti, vaihda/kierrätä ne Kisailun hallinnassa, jos mahdollista.
