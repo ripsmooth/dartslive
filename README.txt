@@ -1,25 +1,43 @@
-KISAILU.NET DARTS LIVE OVERLAY – VERCEL
+KISAILU.NET DARTS LIVE OVERLAY – VERCEL + GITHUB JSON
 
-Tämä on Kisailu.netin live-darts-overlay. Grafiikka 650 x 120 px, läpinäkyvä tausta, tulosten päivitys 3 sekunnin välein.
-Ohjauspaneelissa voi hakea valitun päivän kaikki tapahtumat, valita kilpailun/sarjan ja sen ottelun. Ottelut haetaan eventId-tunnisteella game/getall-rajapinnasta.
+Sisältö:
+- darts-tv-overlay.html: läpinäkyvä 650 x 120 OBS-tulostaulu. Kisailu.netin live-tiedot haetaan 2 sekunnin välein.
+- darts-ohjaus.html: erillinen ohjauspaneeli, toimii toisella laitteella.
+- darts-api-testi.html: automaattinen getscore/getmatch/getall-testi; mittaa vasteajat, kirjaa vastauksen sisältömuutokset ja vie CSV/JSON.
+- api/state.js: tallentaa valinnan GitHub-repositorion JSON-tiedostoon GitHub Contents API:n avulla.
+- api/probe.js: turvallinen välityspalvelin sallittuihin Kisailu-testi-endpointteihin.
 
-JULKAISU
-1. Lataa kansion sisältö GitHub-repositorioon ja yhdistä repo Verceliin (Root Directory = projektin juuri).
-2. Lisää Vercelin Project Settings > Environment Variables -kohtaan:
-   KISAILU_API_KEY       = Kisailu-pyynnön x-api-key-arvo
-   KISAILU_API_VALIDATION = Kisailu-pyynnön x-api-validation-arvo
-   KISAILU_AUTHORIZATION  = vain jos alkuperäinen pyyntö oikeasti tarvitsee Authorization-otsakkeen; käytä arvoa täsmälleen sellaisena kuin onnistuneessa Network-pyynnössä.
-3. Redeploy projekti.
-4. Avaa ohjauspaneeli: https://OMA-PROJEKTI.vercel.app/darts-tv-overlay.html
-5. Lisää OBS:ään Browser Source samalla osoitteella ja perään ?controls=0. Leveys 650, korkeus 120.
+VERCEL ENVIRONMENT VARIABLES
+Säilytä Kisailu-avaimet kuten ennen:
+KISAILU_API_KEY
+KISAILU_API_VALIDATION
+KISAILU_AUTHORIZATION (vain jos käytössä)
 
-TÄRKEÄÄ
-- Älä laita avaimia HTML:ään tai games.json-tiedostoon. Säilytä ne vain Vercelin Environment Variables -asetuksissa.
-- api/events.js hakee valitun päivän tapahtumat event/all-rajapinnasta (Start, End, Forward, AllCollectionDates).
-- api/event.js hakee tapahtuman tiedot ja pelaajanimet.
-- api/live.js hakee valitun tapahtuman kaikki ottelut payloadilla {"EventId":"EVE#..."}; yksittäisiä GameIds-arvoja ei vaadita.
-- Ottelun valinta/automaattivalinta käyttää status-arvoja, mutta Kisailun statuskoodien tarkka merkitys on varmistettava käytännössä.
-- Live-score tulkitaan stats[].Darts.LegScores / LegPoints -kentistä. Jos rajapinnan tulkinta poikkeaa, tarkista tulostaulun lukemat ensimmäisessä käynnissä olevassa pelissä.
-- API voi edellyttää Authorization-arvoa. Jos x-api-key tai validation-arvot ovat aidosti salaisia ja ne on jaettu aiemmin julkisesti, vaihda/kierrätä ne Kisailun hallinnassa, jos mahdollista.
+Lisää ohjaustilaa varten:
+GITHUB_TOKEN = GitHub fine-grained token, jolla on Contents: Read and write vain tähän repoosi.
+GITHUB_REPOSITORY = omistaja/repon-nimi (suositus: erillinen pieni state-repo, jota ei ole yhdistetty tähän Vercel-projektiin)
+GITHUB_STATE_PATH = data/darts-state.json (valinnainen, tämä on oletus)
+GITHUB_BRANCH = main (valinnainen, oletus main)
+DARTS_CONTROL_TOKEN = itse valitsemasi pitkä salainen tunnus, jota käytetään vain ohjauspaneelissa
 
-Korjaus: games.json sisältää Kisailun oikeat GameId-arvot (GAM#...), ja overlay valitsee API-vastauksesta ulomman Id-kentän perusteella. Pisteet luetaan GameData.scores-taulukosta.
+TÄRKEÄÄ GITHUB-TOKENISTA
+Älä koskaan lisää GITHUB_TOKEN-arvoa HTML-tiedostoon tai GitHubiin. Se pysyy vain Vercelin Environment Variables -asetuksissa. GitHub token tarvitsee Contents: Read and write -oikeuden valittuun repositorioon. Tallenna ympäristömuuttujat ja tee Redeploy.
+
+KÄYTTÖÖNOTTO
+1. Kopioi tämän kansion sisältö GitHub-repositorioon, joka on yhdistetty Verceliin.
+2. Lisää yllä olevat ympäristömuuttujat Vercelin Project Settings > Environment Variables.
+3. Tee Redeploy.
+4. Ohjauspaneeli: https://OMA-PROJEKTI.vercel.app/darts-ohjaus.html
+5. OBS Browser Source: https://OMA-PROJEKTI.vercel.app/darts-tv-overlay.html?controls=0 (650 x 120).
+6. API-testi: https://OMA-PROJEKTI.vercel.app/darts-api-testi.html
+
+GITHUB JSON -TALLENNUS
+Ohjauspaneelin tallennus muuttaa data/darts-state.json -tiedostoa GITHUB_REPOSITORY-repositoriossa. Jokainen valinta luo GitHub-commitin. ÄLÄ käytä tähän samaa tuotantorepositoriota, joka käynnistää tämän Vercel-projektin deployn jokaisesta commitista: käytä erillistä pientä GitHub-repoa vain ohjaustilalle. Tämä ei ole uusi tallennuspalvelu, vaan GitHub JSON -tiedosto. Se ei käynnistä live-tulosten hakua eikä tallenna tuloksia. Ohjausvalinnan lukuväli overlayssa on 5 s; tulostietojen kyselyväli on erikseen 2 s.
+
+API-TESTIN KÄYTTÖ
+Avaa darts-api-testi.html. Aseta Event ID. Jos getscore/getmatch vaatii Game ID:n, liitä GAM#... tunniste Game ID -kenttään. Tarkista kolmen endpointin JSON-payloadit ennen testiä; oletuspayloadit ovat alustavia, koska Kisailun getscore/getmatch-payloadien tarkkaa muotoa ei ole vahvistettu tässä paketissa. Testi kysyy kaikkia kolmea endpointia rinnakkain, näyttää vasteajat ja havaitsee vastaussisällön muutokset. Vie JSON/CSV analyysiä varten.
+
+RAJOITUKSET
+- GitHub API:n käyttörajat ja tallennuksen viive koskevat ohjausvalintaa, eivät suoraan live-tuloskyselyä.
+- 2 sekunnin kyselyväli ei takaa, että Kisailu.netin taustajärjestelmä päivittää tiedon kahdessa sekunnissa; se määrittää vain tämän overlayn kyselytiheyden.
+- Testisivun getscore/getmatch payloadit pitää tarvittaessa sovittaa todelliseen Kisailu API -pyyntöön selaimen Network-välilehdeltä.
