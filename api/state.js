@@ -25,7 +25,7 @@ export default async function handler(req, res) {
   const c = config();
   if (!c.owner || !c.name || !c.token) return res.status(503).json({error:'GitHub-asetukset puuttuvat. Tarkista GITHUB_REPOSITORY ja GITHUB_TOKEN.'});
   if (req.method === 'GET') {
-    try { const f = await getFile(c); return res.status(200).json(f.value || {date:'',eventId:'',eventTitle:'',matchId:'auto',updatedAt:null}); }
+    try { const f = await getFile(c); return res.status(200).json(f.value || {date:'',eventId:'',eventTitle:'',matchId:'auto',statsLabel:'TILASTOT',updatedAt:null}); }
     catch(e) { return res.status(502).json({error:'GitHub-valinnan lukeminen epäonnistui',detail:String(e.message||e)}); }
   }
   if (req.method !== 'POST') return res.status(405).json({error:'GET or POST only'});
@@ -33,7 +33,7 @@ export default async function handler(req, res) {
   if (!expected || req.headers['x-darts-control-token'] !== expected) return res.status(401).json({error:'Ohjaustunnus puuttuu tai on väärä.'});
   const b = req.body || {};
   if (!/^\d{4}-\d{2}-\d{2}$/.test(String(b.date||'')) || !/^EVE#[A-Za-z0-9_-]+$/.test(String(b.eventId||''))) return res.status(400).json({error:'Päivä tai kilpailun tunniste ei kelpaa.'});
-  const state = { date:String(b.date), eventId:String(b.eventId), eventTitle:String(b.eventTitle||''), matchId:String(b.matchId||'auto'), updatedAt:new Date().toISOString() };
+  const state = { date:String(b.date), eventId:String(b.eventId), eventTitle:String(b.eventTitle||''), matchId:String(b.matchId||'auto'), statsLabel:String(b.statsLabel||'TILASTOT').trim().slice(0,32)||'TILASTOT', updatedAt:new Date().toISOString() };
   try {
     const old = await getFile(c);
     const url = `${API}/repos/${encodeURIComponent(c.owner)}/${encodeURIComponent(c.name)}/contents/${c.path.split('/').map(encodeURIComponent).join('/')}`;
