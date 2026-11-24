@@ -85,3 +85,9 @@ TIKAT-SARAKKEEN LEGIKOHTAINEN NOLLAUS
 - Uuden legin alussa nolla-arvo näytetään nollana; aiempien legien LegDarts-lukuja ei enää käytetä live-tilanteen varalukuna.
 - Päättyneen ottelun yhteydessä näytetään viimeisen legin tikat, jos Kisailu ei palauta nykyisen legin darts-arvoa tai se on nollattu.
 - AVG pysyy koko ottelun kolmen tikan keskiarvona.
+
+HEITTOVUORON MERKKI – KORJAUS
+- Oikean reunan heittovuoron pallo ohjataan ensisijaisesti Kisailun antamilla kelvollisilla pelaajaindekseillä.
+- Null- tai tyhjää arvoa ei tulkita pelaajaksi 0.
+- Jos eksplisiittistä vuorotietoa ei ole, vuoro päätellään nykyisen legin heittomääristä (kolmen tikan vuorot) ja tarvittaessa LegScores-historiasta.
+- Pelaajan numeerinen ID tarkistetaan pelaajalistasta ennen kuin arvo tulkitaan 0/1-indeksiksi.
