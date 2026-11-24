@@ -68,3 +68,6 @@ ESIMERKKI
 Piilota tilastot: /darts-tv-overlay.html?controls=0&hideStats=1
 Piilota tuloslaatikot: /darts-tv-overlay.html?controls=0&hideScore=1
 Skaalaa 120 prosenttiin: /darts-tv-overlay.html?controls=0&scale=120
+
+OTTELULISTAN KÄYNNISSÄ OLEVAT OTTELUT
+Ohjauspaneelin ottelulistassa Automaattinen: käynnissä oleva -valinnan jälkeen näytetään ensin Kisailun käynnissä olevat ottelut. Kisailun GameData.status-arvoa 2 käytetään käynnissäolon tunnistamiseen; päättymisaika (EndTime) sulkee ottelun pois. Käynnissä olevat merkitään listassa tekstillä "● KÄYNNISSÄ". Muiden otteluiden keskinäinen järjestys säilyy. Lista päivittyy, kun kilpailu haetaan tai Päivitä ottelulista -painiketta painetaan.
