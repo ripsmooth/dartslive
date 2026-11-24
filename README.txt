@@ -74,20 +74,7 @@ Ohjauspaneelin ottelulistassa Automaattinen: käynnissä oleva -valinnan jälkee
 
 
 OTTELUN LOPPUTULOKSEN SÄILYTTÄMINEN
-- Automaattivalinta seuraa Kisailun status=2 -tilassa olevia otteluita.
-- Kun ottelu päättyy, viimeisin ottelu jää tulostauluun. Jos Kisailu palauttaa ottelun vielä päättyneenä, lopputuloksen pisteet ja tilastot päivitetään siitä.
-- Jos ottelu poistuu myöhemmistä API-vastauksista, viimeisin tunnettu ottelutilanne säilytetään eikä tulostaulua nollata.
-- Seuraavan status=2 -tilaan siirtyvän ottelun alkaessa tulostaulu vaihtaa siihen automaattisesti.
-- Viimeisin ottelu tallennetaan myös sessionStorageen, jotta selainvälilehden uudelleenlataus palauttaa tilanteen saman istunnon aikana.
-
-TIKAT-SARAKKEEN LEGIKOHTAINEN NOLLAUS
-- TIKAT-sarake näyttää vain meneillään olevan legin heitot (Kisailun darts-kenttä).
-- Uuden legin alussa nolla-arvo näytetään nollana; aiempien legien LegDarts-lukuja ei enää käytetä live-tilanteen varalukuna.
-- Päättyneen ottelun yhteydessä näytetään viimeisen legin tikat, jos Kisailu ei palauta nykyisen legin darts-arvoa tai se on nollattu.
-- AVG pysyy koko ottelun kolmen tikan keskiarvona.
-
-HEITTOVUORON MERKKI – KORJAUS
-- Oikean reunan heittovuoron pallo ohjataan ensisijaisesti Kisailun antamilla kelvollisilla pelaajaindekseillä.
-- Null- tai tyhjää arvoa ei tulkita pelaajaksi 0.
-- Jos eksplisiittistä vuorotietoa ei ole, vuoro päätellään nykyisen legin heittomääristä (kolmen tikan vuorot) ja tarvittaessa LegScores-historiasta.
-- Pelaajan numeerinen ID tarkistetaan pelaajalistasta ennen kuin arvo tulkitaan 0/1-indeksiksi.
+- Overlay tallentaa viimeisimmän näytetyn ottelun tilanteen selaimen sessionStorageen, joten se voidaan palauttaa sivun uudelleenlatauksen jälkeen samassa selainistunnossa.
+- Kun ottelu päättyy (EndTime tai status 4) tai automaattitilassa ottelu katoaa onnistuneesta Kisailu-haun vastauksesta, tulostaulu säilyttää viimeisimmän tilanteen ja näyttää tunnisteen LOPPUTULOS.
+- Lopputulos pysyy näkyvissä, kunnes Kisailu ilmoittaa uuden käynnissä olevan ottelun (status 2). Sen jälkeen tulostaulu vaihtuu automaattisesti uuteen otteluun.
+- Jos Kisailu-haku epäonnistuu hetkellisesti, viimeisin tulostaulu säilytetään tyhjentämisen sijaan.
