@@ -4,7 +4,7 @@
 <div id="panel"><h2>Darts TV · Kisailu Live</h2><p>Live-haku 2 sekunnin välein. Valitse ottelu tai anna automaattivalinnan näyttää käynnissä oleva peli. OBS-lähteen koko 650 × 120.</p><label>Päivä</label><input id="eventDate" type="date"><button id="loadEvents">Hae päivän kilpailut</button><label>Kilpailu / sarja</label><select id="eventSelect"><option value="">Ladataan kilpailuja…</option></select><label>Ottelu</label><select id="match"><option value="auto">Automaattinen: käynnissä oleva</option></select><button id="refresh">Päivitä ottelut nyt</button><p id="message">Ladataan kilpailuja…</p></div>
 <script>
 const $=id=>document.getElementById(id);let cfg,live=[],timer,events=[],selectedEventId='';const params=new URLSearchParams(location.search);if(params.get('controls')==='0')document.body.classList.add('hide');
-const clamp=(v,min,max,def)=>{const n=Number(v);return Number.isFinite(n)?Math.min(max,Math.max(min,n)):def};
+const clamp=(v,min,max,def)=>{if(v===null||v===undefined||String(v).trim()==='')return def;const n=Number(v);return Number.isFinite(n)?Math.min(max,Math.max(min,n)):def};
 const hasParam=k=>params.has(k)&&params.get(k)!=='';
 const view={
  width:clamp(params.get('width'),320,1920,650),
