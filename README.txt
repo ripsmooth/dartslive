@@ -71,3 +71,17 @@ Skaalaa 120 prosenttiin: /darts-tv-overlay.html?controls=0&scale=120
 
 OTTELULISTAN KÄYNNISSÄ OLEVAT OTTELUT
 Ohjauspaneelin ottelulistassa Automaattinen: käynnissä oleva -valinnan jälkeen näytetään ensin Kisailun käynnissä olevat ottelut. Kisailun GameData.status-arvoa 2 käytetään käynnissäolon tunnistamiseen; päättymisaika (EndTime) sulkee ottelun pois. Käynnissä olevat merkitään listassa tekstillä "● KÄYNNISSÄ". Muiden otteluiden keskinäinen järjestys säilyy. Lista päivittyy, kun kilpailu haetaan tai Päivitä ottelulista -painiketta painetaan.
+
+
+OTTELUN LOPPUTULOKSEN SÄILYTTÄMINEN
+- Automaattivalinta seuraa Kisailun status=2 -tilassa olevia otteluita.
+- Kun ottelu päättyy, viimeisin ottelu jää tulostauluun. Jos Kisailu palauttaa ottelun vielä päättyneenä, lopputuloksen pisteet ja tilastot päivitetään siitä.
+- Jos ottelu poistuu myöhemmistä API-vastauksista, viimeisin tunnettu ottelutilanne säilytetään eikä tulostaulua nollata.
+- Seuraavan status=2 -tilaan siirtyvän ottelun alkaessa tulostaulu vaihtaa siihen automaattisesti.
+- Viimeisin ottelu tallennetaan myös sessionStorageen, jotta selainvälilehden uudelleenlataus palauttaa tilanteen saman istunnon aikana.
+
+TIKAT-SARAKKEEN LEGIKOHTAINEN NOLLAUS
+- TIKAT-sarake näyttää vain meneillään olevan legin heitot (Kisailun darts-kenttä).
+- Uuden legin alussa nolla-arvo näytetään nollana; aiempien legien LegDarts-lukuja ei enää käytetä live-tilanteen varalukuna.
+- Päättyneen ottelun yhteydessä näytetään viimeisen legin tikat, jos Kisailu ei palauta nykyisen legin darts-arvoa tai se on nollattu.
+- AVG pysyy koko ottelun kolmen tikan keskiarvona.
