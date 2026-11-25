@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Darts TV – Sarjataulukko</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:transparent;font-family:Arial,Helvetica,sans-serif;color:#fff}body{overflow:hidden}
+#wrap{width:900px;transform-origin:top left}.panel{background:rgba(10,14,18,.96);border:2px solid #e8c51b;box-shadow:0 5px 20px #0008;border-radius:8px;overflow:hidden}
+.head{background:#e8c51b;color:#101317;padding:13px 18px;display:flex;align-items:center;justify-content:space-between;font-weight:900;letter-spacing:.5px;font-size:25px;text-transform:uppercase}.sub{font-size:14px;font-weight:700;opacity:.8}
+table{width:100%;border-collapse:collapse;table-layout:auto}thead{background:#18232a;color:#e8c51b}th{font-size:15px;text-align:center;padding:9px 8px;white-space:nowrap}th.team{text-align:left}td{padding:9px 8px;border-bottom:1px solid #27343b;font-size:17px;font-weight:700;text-align:center;white-space:nowrap}td.team{text-align:left;max-width:340px;overflow:hidden;text-overflow:ellipsis}tbody tr:nth-child(even){background:#111a20}tbody tr:first-child td.rank{color:#e8c51b}td.points{color:#a7e45b;font-size:19px}td.rank{width:45px;color:#a7e45b}.foot{padding:7px 12px;color:#9aa8af;font-size:12px;display:flex;justify-content:space-between}.error{color:#ff9b9b;padding:15px;font-weight:bold}
+</style></head><body><div id="wrap"><div class="panel"><div class="head"><span id="heading">SARJATAULUKKO</span><span class="sub" id="season"></span></div><div id="tablearea"><table><thead><tr><th>#</th><th class="team">Joukkue</th><th>Ott.</th><th>V</th><th>T</th><th>H</th><th>Pelisuhde</th><th>Heitto ka.</th><th>Pisteet</th></tr></thead><tbody id="rows"></tbody></table></div><div class="foot"><span id="status">Haetaan…</span><span>KISAILU.NET</span></div></div></div>
+<script>
+const p=new URLSearchParams(location.search);
+const API='https://api.kisailu.net/organization/teams';
+const season=p.get('season')||'SEA#sdlsml202627', org=p.get('org')||'ORG#937795', teamType=p.get('sarja')||'SmLiiga';
+const refresh=Math.max(5,Number(p.get('refresh')||30))*1000;
+const scale=Math.max(10,Math.min(300,Number(p.get('scale')||100)))/100;
+const width=Math.max(300,Number(p.get('width')||900));
+const right=p.get('right'),bottom=p.get('bottom');
+const wrap=document.getElementById('wrap');wrap.style.width=width+'px';
+if(right!==null||bottom!==null){document.body.style.position='absolute';document.body.style.right=(right||'0')+'px';document.body.style.bottom=(bottom||'0')+'px'}
+wrap.style.transform='scale('+scale+')';
+const category=p.get('nimi')||({SmLiiga:'Avoin mestaruus'}[teamType]||teamType);
+document.getElementById('heading').textContent=category.toUpperCase()+' – SARJATAULUKKO';
+document.getElementById('season').textContent=p.get('kausi')||'2026–27';
+const val=(obj,keys)=>{for(const k of keys){let v=obj?.[k];if(v!==undefined&&v!==null&&v!=='' )return v}return ''};
+const num=(v)=>{if(v===''||v===null||v===undefined)return '';let n=Number(v);return Number.isFinite(n)?n:v};
+const ratio=(s)=>{let a=val(s,['RW','R','GamesWon','Won']);let b=val(s,['RL','L','GamesLost','Lost']);if(a!==''&&b!==''&&String(a).includes(':'))return a;if(a!==''&&b!=='')return `${a}-${b}`;return val(s,['Ratio','GameRatio','Pelisuhde'])};
+function getAvg(s,t){let direct=val(s,['AVG','Average','ThrowAverage','HeittoKa','HeittoKeskiarvo']);if(direct!=='')return direct;let tp=val(s,['TP','TotalPoints','PointsThrown']);let td=val(s,['TD','TotalDarts','DartsThrown']);if(tp!==''&&td!==''&&Number(td)>0)return (Number(tp)/Number(td)).toFixed(2);return val(t,['AVG','Average','HeittoKa'])}
+function render(data){let list=Array.isArray(data)?data:(data?.teams||data?.Teams||data?.Items||data?.items||[]);if(!Array.isArray(list))list=[];list=list.filter(t=>t&&val(t,['Team','Name','team']));list.sort((a,b)=>Number(val(a?.Stat,['R','Rank','Ranking'])||999)-Number(val(b?.Stat,['R','Rank','Ranking'])||999));
+if(!list.length){document.getElementById('rows').innerHTML='<tr><td colspan="9" class="error">API palautti tyhjän joukkue-listan.</td></tr>';return}
+document.getElementById('rows').innerHTML=list.map((t,i)=>{const s=t.Stat||t.stat||{};const name=val(t,['Team','Name','team']);const matches=val(s,['GP','Games','Matches','M','Ottelut']);const wins=val(s,['W','Wins','V']);const ties=val(s,['T','Tie','Draws']);const losses=val(s,['L','Losses','H']);const r=ratio(s);const avg=getAvg(s,t);const pts=val(s,['PTS','Points','Pisteet']);const rank=val(s,['R','Rank','Ranking'])||i+1;return `<tr><td class="rank">${rank}</td><td class="team">${esc(name)}</td><td>${matches}</td><td>${wins}</td><td>${ties}</td><td>${losses}</td><td>${r}</td><td>${avg}</td><td class="points">${pts}</td></tr>`}).join('');}
+function esc(x){return String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+async function load(){document.getElementById('status').textContent='Päivitetään…';try{const res=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({SeasonId:season,Search:'ByType',OrganizationId:org,TeamType:teamType,Active:true})});if(!res.ok)throw new Error('HTTP '+res.status);const data=await res.json();render(data);document.getElementById('status').textContent='Päivitetty '+new Date().toLocaleTimeString('fi-FI')}catch(e){document.getElementById('status').textContent='Virhe: '+e.message; if(!document.getElementById('rows').children.length)document.getElementById('rows').innerHTML='<tr><td colspan="9" class="error">Tietojen haku epäonnistui. Tarkista API-yhteys / CORS.</td></tr>'}}
+load();setInterval(load,refresh);
+</script></body></html>
