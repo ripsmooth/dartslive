@@ -117,7 +117,8 @@ Huomaa: tarkka tapahtuman otteludata tulee Kisailusta vasta Vercel-julkaisun jal
 
 
 GRAFIIKKAPÄIVITYS
-- Ottelujärjestys näyttää enintään 16 ottelua kerrallaan kahdeksan ottelun riveissä. Jos otteluita on yli 16, näkymä vaihtaa automaattisesti seuraavaan 16 ottelun sivuun.
+- Ottelujärjestys näyttää enintään 16 ottelua kerrallaan kahdessa pystysarakkeessa: ottelut 1–8 vasemmalla ja 9–16 oikealla. Jos otteluita on yli 16, näkymä vaihtaa automaattisesti seuraavaan 16 ottelun sivuun.
 - Ottelujärjestyksessä näkyvät molempien pelaajien ottelukohtaiset 3 tikan keskiarvot. Laskenta käyttää samaa LegPoints/LegDarts-laskentaa kuin varsinainen live-tulostaulu.
 - Ottelujärjestys ja ottelukaavio sovitetaan automaattisesti 16:9-kuvaruutuun; sisältö ei vaadi selaamista.
-- Grafiikoiden värit ja paneelit noudattavat Darts TV -tulostaulun tummaa, keltaista ja vihreää tyyliä.
+- Ottelujärjestys noudattaa valittua Darts TV -layoutia 1: yläreunassa DARTS TV -brändi ja keltainen otsikkopalkki, ottelunumerot keltaisissa tunnisteissa, pelaajien keskiarvot vihreällä, tulos omassa keltaisessa kentässään sekä vaihe/taulu ja tilatunniste omissa sarakkeissaan.
+- Ottelukaavio säilyttää aiemman graafisen toteutuksensa. Vanha live-tulostaulu ja sarjataulukko eivät muutu.
