@@ -78,4 +78,3 @@ OTTELUN LOPPUTULOKSEN SÄILYTTÄMINEN
 - Kun ottelu päättyy (EndTime tai status 4) tai automaattitilassa ottelu katoaa onnistuneesta Kisailu-haun vastauksesta, tulostaulu säilyttää viimeisimmän tilanteen ja näyttää tunnisteen LOPPUTULOS.
 - Lopputulos pysyy näkyvissä, kunnes Kisailu ilmoittaa uuden käynnissä olevan ottelun (status 2). Sen jälkeen tulostaulu vaihtuu automaattisesti uuteen otteluun.
 - Jos Kisailu-haku epäonnistuu hetkellisesti, viimeisin tulostaulu säilytetään tyhjentämisen sijaan.
-\n\nSARJATAULUKKO (lisätty pakettiin)\n- darts-tv-sarjataulukko.html: erillinen OBS Browser Source -overlay, ei muuta live-tulostaulua.\n- api/teams.js: välittää organization/teams API-haun Vercelin kautta.\n- OBS:ssä käytä tätä tiedostoa Browser Sourcena. Vercel URL: /darts-tv-sarjataulukko.html?sarja=SmLiiga\n- Parametrit: sarja, season, nimi, width, scale, refresh.\n
