@@ -57,6 +57,8 @@ Kaikki parametrit ovat valinnaisia. Oletusarvot: width=650, height=123, right=50
 - bottom=50 : etäisyys alareunasta pikseleinä (0–2000)
 - scale=100 : koko grafiikan skaalaus prosentteina (50–200)
 - hideStats=1 : piilottaa tilastorivin; oletuskorkeus ilman height-parametria 96 px
+- hideAvg=1 : piilottaa ottelun kokonaiskeskiarvon AVG-sarakkeen (oletuksena näkyy)
+- hideAvgLeg=1 : piilottaa nykyisen legin keskiarvon AVG LEG -sarakkeen (oletuksena näkyy)
 - hideScore=1 : piilottaa jäljellä olevien pisteiden keltaiset pistelaatikot
 - refresh=2000 : Kisailu.netin ottelutietojen hakuväli millisekunteina (500–60000)
 - theme=yellow|green|blue|red : korostusvärit; oletus yellow
@@ -66,6 +68,8 @@ ESIMERKKI
 /darts-tv-overlay.html?controls=0&width=800&height=150&right=50&bottom=50&scale=100&refresh=2000&theme=yellow
 
 Piilota tilastot: /darts-tv-overlay.html?controls=0&hideStats=1
+Piilota ottelun AVG-sarake: /darts-tv-overlay.html?controls=0&hideAvg=1
+Piilota AVG LEG -sarake: /darts-tv-overlay.html?controls=0&hideAvgLeg=1
 Piilota tuloslaatikot: /darts-tv-overlay.html?controls=0&hideScore=1
 Skaalaa 120 prosenttiin: /darts-tv-overlay.html?controls=0&scale=120
 
@@ -129,3 +133,8 @@ PÄIVITYS 25.11.2026 – OTTELUJÄRJESTYSGRAFIIKAN KORJAUKSET
 - Kisailun EVE#-tapahtumatunnistetta ei näytetä ottelujärjestyksen eikä ottelukaavion julkisessa grafiikassa. Tunniste säilyy teknisessä URL-parametrissa ja ohjauspaneelin EventId-kentässä, jotta datan haku toimii.
 - Ottelujärjestyksen ottelukortin tiedot näytetään erillisillä riveillä: vaihe, taulu ja kellonaika.
 - Varsinaista live-tulostaulua ja sarjataulukon logiikkaa ei muutettu.
+
+Uudet keskiarvoparametrit (molemmat näkyvät oletuksena; aseta arvoksi 0 tai poista parametri näyttääksesi sarakkeen):
+- hideAvg=1 : piilottaa koko ottelun AVG-keskiarvon.
+- hideAvgLeg=1 : piilottaa käynnissä olevan (tai päättyneen ottelun viimeisen) legin AVG LEG -keskiarvon.
+Parametrit ovat toisistaan riippumattomia ja ne voi yhdistää samaan osoitteeseen. Esim. hideAvg=1&hideAvgLeg=0 näyttää vain AVG LEG -sarakkeen.
