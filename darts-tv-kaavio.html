@@ -18,7 +18,7 @@ const refreshMs=Math.max(3000,Math.min(60000,(Number(params.get('refresh'))||10)
 const scale=Math.max(50,Math.min(200,Number(params.get('scale'))||100))/100;
 const width=Math.max(900,Math.min(5000,Number(params.get('width'))||1920));
 const $=id=>document.getElementById(id);
-let games=[],players={},eventTitle=eventId,refreshTimer=null,inFlight=false,lastUpdated=null;
+let games=[],players={},eventTitle='Ottelupäivän ottelut',refreshTimer=null,inFlight=false,lastUpdated=null;
 const decodeGame=item=>{
   const raw=item?.GameData;
   if(typeof raw!=='string')return raw||item;
@@ -55,6 +55,7 @@ function playerName(g,i){
   if(p===undefined||p===null||Number(p)<0||Number(p)===40)return 'Odottaa jatkoonmenijää';
   return players[String(p)]||('Pelaaja '+p);
 }
+function publicEventTitle(value){const clean=String(value??'').replace(/EVE#[A-Za-z0-9_-]+/gi,'').replace(/[·|–—-]+/g,' ').replace(/\s+/g,' ').trim();return clean||'Ottelupäivän ottelut';}
 function stageCode(g){return String(g.r??g.round??g.Round??'').trim().toUpperCase();}
 function stageName(g){
   const custom=String(g.d??'').trim();
@@ -96,7 +97,7 @@ async function loadEventNames(){
     const detail=await r.json();
     const root=detail?.EventData||detail?.eventData||detail;
     players=extractPlayers(detail);
-    eventTitle=String(root?.Title??root?.title??root?.Name??root?.name??root?.EventName??eventId);
+    eventTitle=publicEventTitle(root?.Title??root?.title??root?.Name??root?.name??root?.EventName??'');
   }catch(e){console.warn('Kilpailun tietojen haku epäonnistui',e);}
 }
 async function fetchGames(){
@@ -112,7 +113,7 @@ async function refreshData(){
     if(!Object.keys(players).length)await loadEventNames();
     const next=await fetchGames();
     games=next;lastUpdated=new Date();render();
-    $('status').textContent=`${eventTitle} · ${games.length} ottelua · päivitetty ${lastUpdated.toLocaleTimeString('fi-FI')}`;
+    $('status').textContent=`${games.length} ottelua · päivitetty ${lastUpdated.toLocaleTimeString('fi-FI')}`;
     $('connection').textContent='LIVE-DATA';$('connection').className='good';
   }catch(e){
     $('connection').textContent='YHTEYSVIRHE';$('connection').className='bad';
@@ -130,7 +131,7 @@ function fitCanvas(){
   $('screen').style.transform=`translate(-50%,-50%) scale(${fit*Math.min(scale,1)})`;
 }
 function render(){
-  $('eventTitle').textContent=eventTitle;
+  $('eventTitle').textContent=publicEventTitle(eventTitle);
   $('refreshInfo').textContent=`PÄIVITYS ${Math.round(refreshMs/1000)} S`;
   if(!games.length){$('content').innerHTML='<div class="empty">Tälle kilpailulle ei löytynyt ottelukaavion otteluita.</div>';return;}
 

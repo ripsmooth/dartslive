@@ -6,17 +6,13 @@
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent;color:var(--white);font-family:Arial,Helvetica,sans-serif}
 body{position:relative}
 #wrap{position:absolute;left:50%;top:50%;width:var(--content-width,1920px);height:1080px;padding:0 22px 12px;display:flex;flex-direction:column;transform-origin:center center;background:linear-gradient(145deg,#05090b 0%,#081015 52%,#05090b 100%)}
-header{height:112px;flex:0 0 112px;display:grid;grid-template-columns:350px minmax(0,1fr) 420px;align-items:center;gap:20px;padding:0 22px 0 8px;border-bottom:4px solid transparent;border-image:linear-gradient(90deg,var(--yellow) 0 68%,var(--green) 68% 100%) 1;background:linear-gradient(110deg,#080e12 0%,#101a20 52%,#080e12 100%);position:relative}
+header{height:112px;flex:0 0 112px;display:grid;grid-template-columns:minmax(0,1fr) 420px;align-items:center;gap:20px;padding:0 22px 0 8px;border-bottom:4px solid transparent;border-image:linear-gradient(90deg,var(--yellow) 0 68%,var(--green) 68% 100%) 1;background:linear-gradient(110deg,#080e12 0%,#101a20 52%,#080e12 100%);position:relative}
 header:after{content:"";position:absolute;right:0;top:0;width:30px;height:100%;background:var(--green);clip-path:polygon(65% 0,100% 0,35% 100%,0 100%)}
-.brand{height:100%;display:flex;align-items:center;gap:10px;padding-left:6px;border-right:2px solid #39454b;min-width:0}
-.brand svg{width:66px;height:66px;flex:0 0 66px;filter:drop-shadow(0 0 5px #00f52d35)}
-.brandword{font-size:39px;line-height:1;font-style:italic;font-weight:1000;letter-spacing:-1.4px;white-space:nowrap;color:#f7f9fa}
-.brandword b{display:inline-block;padding:4px 8px 3px;margin-left:2px;background:var(--yellow);color:#05090b;font-style:italic}
 .titleblock{min-width:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:7px}
 .titlebadge{display:inline-flex;align-items:center;min-height:58px;padding:0 40px;background:var(--yellow);color:#05090b;font-size:40px;line-height:1;font-weight:1000;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;clip-path:polygon(0 0,100% 0,96% 100%,4% 100%)}
 .subtitle{max-width:100%;color:#d6dee2;font-size:19px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.1px}
 .liveinfo{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:7px;min-width:0;padding-right:24px;text-align:right;white-space:nowrap}
-.eventcode{color:#f7f9fa;font-size:22px;font-weight:950;letter-spacing:.2px}
+
 .statusline{display:flex;align-items:center;justify-content:flex-end;gap:10px;color:var(--muted);font-size:14px;font-weight:900;text-transform:uppercase}
 .connection{display:inline-flex;align-items:center;gap:7px;color:var(--green)}
 .connection:before{content:"";width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:var(--green);box-shadow:0 0 8px #00f52d88}
@@ -38,9 +34,9 @@ header:after{content:"";position:absolute;right:0;top:0;width:30px;height:100%;b
 .avgline{display:flex;align-items:center;gap:5px;color:var(--green);font-size:clamp(12px,.88vw,17px);font-weight:900;white-space:nowrap;font-variant-numeric:tabular-nums}
 .avgline b{font-size:inherit;font-weight:1000;letter-spacing:.1px}
 .score{height:58px;display:flex;align-items:center;justify-content:center;padding:0 5px;background:var(--yellow);color:#05090b;border:1px solid #fff17a;border-radius:7px;font-size:clamp(22px,1.65vw,34px);font-weight:1000;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums;box-shadow:inset 0 0 0 1px #0002}
-.meta{min-width:0;display:flex;flex-direction:column;justify-content:center;gap:5px;padding-left:8px;border-left:1px solid #657178;text-align:center}
+.meta{min-width:0;display:flex;flex-direction:column;justify-content:center;gap:3px;padding-left:8px;border-left:1px solid #657178;text-align:center}
 .stage{min-width:0;color:#f7f9fa;font-size:clamp(13px,.95vw,19px);font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.board{min-width:0;color:#c2cbd0;font-size:clamp(11px,.75vw,15px);line-height:1.1;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.board,.time{min-width:0;color:#c2cbd0;font-size:clamp(10px,.68vw,13px);line-height:1.05;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .state{min-width:0;height:43px;display:flex;align-items:center;justify-content:center;padding:0 7px;border:2px solid #59656b;border-radius:7px;background:linear-gradient(180deg,#354148,#1b252b);color:#e1e7ea;font-size:clamp(11px,.78vw,16px);font-weight:1000;letter-spacing:.1px;text-transform:uppercase;white-space:nowrap}
 .state.live{border-color:var(--yellow);background:#28270d;color:var(--yellow);box-shadow:0 0 12px #ffe50020}
 .state.done{border-color:#00b927;background:#03280c;color:var(--green);box-shadow:0 0 10px #00f52d18}
@@ -49,7 +45,7 @@ footer{height:31px;flex:0 0 31px;display:flex;align-items:center;justify-content
 footer:before{content:"";position:absolute;left:0;top:-3px;width:30%;height:7px;background:var(--green);clip-path:polygon(0 0,100% 0,96% 100%,0 100%)}
 footer:after{content:"";position:absolute;right:0;top:-3px;width:35%;height:7px;background:var(--yellow);clip-path:polygon(4% 0,100% 0,100% 100%,0 100%)}
 @media (prefers-reduced-motion:no-preference){.match.live .state{animation:livePulse 2.2s ease-in-out infinite}@keyframes livePulse{50%{box-shadow:0 0 14px #ffe50055}}}
-</style></head><body><div id="wrap"><header><div class="brand"><svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="39" cy="40" r="34" fill="none" stroke="#00f52d" stroke-width="4"/><circle cx="39" cy="40" r="25" fill="none" stroke="#ffe500" stroke-width="3"/><circle cx="39" cy="40" r="15" fill="none" stroke="#00f52d" stroke-width="3"/><circle cx="39" cy="40" r="5" fill="#ffe500"/><path d="M39 6V74M5 40H73M15 16L63 64M63 16L15 64M27 8L51 72M8 27L70 53M51 8L27 72M8 53L70 27" fill="none" stroke="#00f52d" stroke-width="1.5" opacity=".8"/><path d="M57 13L74 5L67 22L62 17Z" fill="#ffe500"/></svg><span class="brandword">DARTS<b>TV</b></span></div><div class="titleblock"><span class="titlebadge">OTTELUJÄRJESTYS</span><span class="subtitle" id="eventTitle">Kisailu · haetaan kilpailua…</span></div><div class="liveinfo"><span class="eventcode" id="eventCode">EVE#sml26p0426</span><span class="statusline"><span id="connection" class="connection">LIVE-DATA</span><span id="status">Haetaan otteluita…</span></span></div></header><main id="content"></main><footer><span>OTTELUT KISAILU.NETIN JÄRJESTYKSESSÄ · KA = OTTELUN 3 TIKAN KESKIARVO</span><span id="refreshInfo"></span></footer></div>
+</style></head><body><div id="wrap"><header><div class="titleblock"><span class="titlebadge">OTTELUJÄRJESTYS</span><span class="subtitle" id="eventTitle">Kisailu · haetaan kilpailua…</span></div><div class="liveinfo"><span class="statusline"><span id="connection" class="connection">LIVE-DATA</span><span id="status">Haetaan otteluita…</span></span></div></header><main id="content"></main><footer><span>OTTELUT KISAILU.NETIN JÄRJESTYKSESSÄ · KA = OTTELUN 3 TIKAN KESKIARVO</span><span id="refreshInfo"></span></footer></div>
 <script>
 
 const params=new URLSearchParams(location.search);
@@ -58,7 +54,7 @@ const refreshMs=Math.max(3000,Math.min(60000,(Number(params.get('refresh'))||10)
 const scale=Math.max(50,Math.min(200,Number(params.get('scale'))||100))/100;
 const width=Math.max(900,Math.min(5000,Number(params.get('width'))||1920));
 const $=id=>document.getElementById(id);
-let games=[],players={},eventTitle=eventId,refreshTimer=null,pageTimer=null,inFlight=false,lastUpdated=null,pageIndex=0;
+let games=[],players={},eventTitle='Ottelupäivän ottelut',refreshTimer=null,pageTimer=null,inFlight=false,lastUpdated=null,pageIndex=0;
 const decodeGame=item=>{
   const raw=item?.GameData;
   if(typeof raw!=='string')return raw||item;
@@ -95,6 +91,7 @@ function playerName(g,i){
   if(p===undefined||p===null||Number(p)<0||Number(p)===40)return 'Odottaa jatkoonmenijää';
   return players[String(p)]||('Pelaaja '+p);
 }
+function publicEventTitle(value){const clean=String(value??'').replace(/EVE#[A-Za-z0-9_-]+/gi,'').replace(/[·|–—-]+/g,' ').replace(/\s+/g,' ').trim();return clean||'Ottelupäivän ottelut';}
 function stageCode(g){return String(g.r??g.round??g.Round??'').trim().toUpperCase();}
 function stageName(g){
   const custom=String(g.d??'').trim();
@@ -115,10 +112,13 @@ function scoreText(g){
   return `${Number(w[0])||0} – ${Number(w[1])||0}`;
 }
 function boardText(g){
-  const num=g.gameSpot?.Number??g.gameSpot?.number;
-  const start=Number(g.StartTime);
-  const clock=Number.isFinite(start)&&start>1000000000000?new Date(start).toLocaleTimeString('fi-FI',{hour:'2-digit',minute:'2-digit'}):'';
-  return [num!==undefined&&num!==null?`Taulu ${num}`:'',clock?`Klo ${clock}`:''].filter(Boolean).join(' · ');
+  const num=g.gameSpot?.Number??g.gameSpot?.number??g.gameSpot?.No??g.gameSpot?.no;
+  return num!==undefined&&num!==null&&String(num).trim()!==''?`Taulu ${num}`:'Taulu —';
+}
+function timeText(g){
+  const raw=g.StartTime??g.startTime??g.RealStartTime??g.realStartTime;
+  const start=typeof raw==='string'&&!/^\d+(\.\d+)?$/.test(raw)?Date.parse(raw):Number(raw);
+  return Number.isFinite(start)&&start>1000000000000?`Klo ${new Date(start).toLocaleTimeString('fi-FI',{hour:'2-digit',minute:'2-digit'})}`:'Klo —';
 }
 function gameOrder(g,index){
   const id=Number(g.id);
@@ -138,7 +138,7 @@ async function loadEventNames(){
     const detail=await r.json();
     const root=detail?.EventData||detail?.eventData||detail;
     players=extractPlayers(detail);
-    eventTitle=String(root?.Title??root?.title??root?.Name??root?.name??root?.EventName??eventId);
+    eventTitle=publicEventTitle(root?.Title??root?.title??root?.Name??root?.name??root?.EventName??'');
   }catch(e){console.warn('Kilpailun tietojen haku epäonnistui',e);}
 }
 async function fetchGames(){
@@ -168,27 +168,28 @@ window.addEventListener('resize',()=>{if(window.renderCurrent)window.renderCurre
 
 
 function playerAverage(g,i){
-  const stat=g.stats?.[i]||{},d=stat.Darts||{};
-  if(stat.GameType&&String(stat.GameType).toLowerCase()!=='x01')return '—';
-  const legDarts=Array.isArray(d.LegDarts)?d.LegDarts:[];
-  const legPoints=Array.isArray(d.LegPoints)?d.LegPoints:[];
-  const completedDarts=legDarts.reduce((a,n)=>a+(Number(n)||0),0);
-  const completedPoints=legPoints.reduce((a,n)=>a+(Number(n)||0),0);
-  const ended=Number(g.EndTime)>0||Number(g.status??g.Status)===4;
+  // Sama ottelukeskiarvon laskenta kuin toimivassa live-tulostaulussa.
+  const stat=(Array.isArray(g.stats)?g.stats[i]:g.stats?.[i])||{};
+  const d=stat.Darts||stat.darts||{};
+  const legDarts=Array.isArray(d.LegDarts)?d.LegDarts:(Array.isArray(d.legDarts)?d.legDarts:[]);
+  const legPoints=Array.isArray(d.LegPoints)?d.LegPoints:(Array.isArray(d.legPoints)?d.legPoints:[]);
+  const completedDarts=legDarts.reduce((sum,n)=>sum+(Number(n)||0),0);
+  const completedPoints=legPoints.reduce((sum,n)=>sum+(Number(n)||0),0);
+  const ended=Number(g.EndTime??g.endTime)>0||Number(g.status??g.Status)===4;
   const currentDarts=Array.isArray(g.darts)?Math.max(0,Number(g.darts[i])||0):0;
-  const start=Number(g.start_scores?.[i]??501);
-  const rawRemaining=g.scores?.[i];
+  const start=Number(g.start_scores?.[i]??g.startScores?.[i]??d.StartScore??d.startScore??501);
+  const rawRemaining=(g.scores??g.remainingScores)?.[i];
   let remaining=rawRemaining===undefined||rawRemaining===null||rawRemaining===''?NaN:Number(rawRemaining);
   if(!Number.isFinite(remaining)){
-    const legScores=Array.isArray(d.LegScores)?d.LegScores:[];
+    const legScores=Array.isArray(d.LegScores)?d.LegScores:(Array.isArray(d.legScores)?d.legScores:[]);
     const lastLeg=legScores.length?legScores[legScores.length-1]:null;
     remaining=Array.isArray(lastLeg)&&lastLeg.length?Number(lastLeg[0]):start;
   }
   if(!Number.isFinite(remaining))remaining=start;
-  const livePoints=!ended?Math.max(0,start-remaining):0;
-  const darts=completedDarts+(!ended?currentDarts:0);
-  const points=completedPoints+(!ended?livePoints:0);
-  return darts>0?((points/darts)*3).toFixed(2).replace('.',','):'—';
+  const currentLegPoints=!ended&&rawRemaining!==undefined&&rawRemaining!==null&&rawRemaining!==''?Math.max(0,start-remaining):0;
+  const matchDarts=completedDarts+(!ended?currentDarts:0);
+  const matchPoints=completedPoints+(!ended?currentLegPoints:0);
+  return matchDarts>0?((matchPoints/matchDarts)*3).toFixed(2).replace('.',','):'—';
 }
 function fitCanvas(){
   const designW=width||1920,designH=1080;
@@ -198,18 +199,18 @@ function fitCanvas(){
 }
 
 function render(){
-  $('eventTitle').textContent=eventTitle;
+  $('eventTitle').textContent=publicEventTitle(eventTitle);
   const pageSize=16,totalPages=Math.max(1,Math.ceil(games.length/pageSize));
   pageIndex=Math.min(pageIndex,totalPages-1);
   const first=pageIndex*pageSize,visible=games.slice(first,first+pageSize);
   const left=visible.slice(0,8),right=visible.slice(8,16);
   const makeCard=(g,localIndex)=>{
     const i=first+localIndex,st=gameStatus(g),names=[playerName(g,0),playerName(g,1)];
-    const order=gameOrder(g,i),label=stageName(g),score=scoreText(g),board=boardText(g);
+    const order=gameOrder(g,i),label=stageName(g),score=scoreText(g),board=boardText(g),clock=timeText(g);
     const state=st==='live'?'KÄYNNISSÄ':st==='done'?'PÄÄTTYNYT':'TULOSSA';
     const avgs=[playerAverage(g,0),playerAverage(g,1)];
     const avg=value=>value==='—'?'—':value;
-    return `<article class="match ${st}"><span class="number">${String(order).padStart(2,'0')}</span><div class="players"><div class="player"><span class="name">${escapeHtml(names[0])}</span><span class="avgline">KA. <b>${escapeHtml(avg(avgs[0]))}</b></span></div><div class="player"><span class="name">${escapeHtml(names[1])}</span><span class="avgline">KA. <b>${escapeHtml(avg(avgs[1]))}</b></span></div></div><span class="score">${escapeHtml(score==='–'?'—':score)}</span><div class="meta"><span class="stage">${escapeHtml(label)}</span><span class="board">${escapeHtml(board||'Taulu —')}</span></div><span class="state ${st}">${state}</span></article>`;
+    return `<article class="match ${st}"><span class="number">${String(order).padStart(2,'0')}</span><div class="players"><div class="player"><span class="name">${escapeHtml(names[0])}</span><span class="avgline">KA. <b>${escapeHtml(avg(avgs[0]))}</b></span></div><div class="player"><span class="name">${escapeHtml(names[1])}</span><span class="avgline">KA. <b>${escapeHtml(avg(avgs[1]))}</b></span></div></div><span class="score">${escapeHtml(score==='–'?'—':score)}</span><div class="meta"><span class="stage">${escapeHtml(label)}</span><span class="board">${escapeHtml(board||'Taulu —')}</span><span class="time">${escapeHtml(clock)}</span></div><span class="state ${st}">${state}</span></article>`;
   };
   const makeColumn=(items,offset)=>`<section class="match-column">${items.map((g,i)=>makeCard(g,offset+i)).join('')}</section>`;
   $('content').innerHTML=visible.length?makeColumn(left,0)+makeColumn(right,8):'<div class="error">Tälle kilpailulle ei löytynyt otteluita.</div>';
@@ -218,7 +219,7 @@ function render(){
   fitCanvas();
 }
 window.renderCurrent=render;
-$('wrap').style.setProperty('--content-width',width+'px');$('eventCode').textContent=eventId;window.addEventListener('resize',fitCanvas);fitCanvas();
+$('wrap').style.setProperty('--content-width',width+'px');window.addEventListener('resize',fitCanvas);fitCanvas();
 refreshData();startRefresh();
 pageTimer=setInterval(()=>{if(games.length>16){pageIndex=(pageIndex+1)%Math.ceil(games.length/16);render();}},Math.max(10000,refreshMs));
 </script></body></html>

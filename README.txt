@@ -122,3 +122,10 @@ GRAFIIKKAPÄIVITYS
 - Ottelujärjestys ja ottelukaavio sovitetaan automaattisesti 16:9-kuvaruutuun; sisältö ei vaadi selaamista.
 - Ottelujärjestys noudattaa valittua Darts TV -layoutia 1: yläreunassa DARTS TV -brändi ja keltainen otsikkopalkki, ottelunumerot keltaisissa tunnisteissa, pelaajien keskiarvot vihreällä, tulos omassa keltaisessa kentässään sekä vaihe/taulu ja tilatunniste omissa sarakkeissaan.
 - Ottelukaavio säilyttää aiemman graafisen toteutuksensa. Vanha live-tulostaulu ja sarjataulukko eivät muutu.
+
+PÄIVITYS 25.11.2026 – OTTELUJÄRJESTYSGRAFIIKAN KORJAUKSET
+- Ottelujärjestyksen pelaajakeskiarvo käyttää nyt samaa laskentaperustaa kuin toimiva darts-tv-overlay: Darts.LegDarts, Darts.LegPoints sekä käynnissä olevan legin tikat ja jäljellä oleva pistemäärä. Aiempi GameType-tarkistus, joka saattoi näyttää kaikille pelaajille viivan, poistettiin.
+- Ottelujärjestyksen grafiikasta poistettiin Darts TV -logo.
+- Kisailun EVE#-tapahtumatunnistetta ei näytetä ottelujärjestyksen eikä ottelukaavion julkisessa grafiikassa. Tunniste säilyy teknisessä URL-parametrissa ja ohjauspaneelin EventId-kentässä, jotta datan haku toimii.
+- Ottelujärjestyksen ottelukortin tiedot näytetään erillisillä riveillä: vaihe, taulu ja kellonaika.
+- Varsinaista live-tulostaulua ja sarjataulukon logiikkaa ei muutettu.
