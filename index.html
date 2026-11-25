@@ -24,6 +24,31 @@
 <div id="standingsUrl" class="linkPreview">Osoite muodostetaan valintojen perusteella.</div>
 <div id="standingsStatus" class="standingsStatus">Haetaan valitun sarjan lohkoja…</div>
 </section>
+
+<hr class="panelSep">
+<section aria-labelledby="diagramHeading">
+<h2 class="panelTitle" id="diagramHeading">Ottelupäivän kaavio / ottelujärjestys</h2>
+<p class="hint">Sama Kisailu-kilpailu voidaan avata kahdessa grafiikassa: kaikki ottelut numerojärjestyksessä tai koordinaatteihin perustuvana ottelukaaviona. Tämä ei muuta live-tulostaulun tai sarjataulukon asetuksia.</p>
+<label for="diagramEventId">Kisailun tapahtumatunniste (EventId)</label>
+<input id="diagramEventId" value="EVE#sml26p0426" spellcheck="false" autocomplete="off">
+<div class="grid">
+ <div><label for="diagramWidth">Näkymän leveys (px)</label><input id="diagramWidth" type="number" min="900" max="5000" step="50" value="1920"></div>
+ <div><label for="diagramScale">Koko (%)</label><input id="diagramScale" type="number" min="50" max="200" step="5" value="100"></div>
+ <div><label for="diagramRefresh">Päivitysväli (sekuntia)</label><input id="diagramRefresh" type="number" min="3" max="60" step="1" value="10"></div>
+ <div><label>&nbsp;</label><button id="useSelectedDiagramEvent" class="secondary wide" type="button">Käytä yllä valittua kilpailua</button></div>
+</div>
+<div class="actionRow">
+ <button id="openMatchOrder" type="button">Avaa ottelujärjestys</button>
+ <button id="copyMatchOrder" class="secondary" type="button">Kopioi ottelujärjestyksen OBS-osoite</button>
+</div>
+<div id="matchOrderUrl" class="linkPreview">Ottelujärjestyksen osoite muodostetaan valintojen perusteella.</div>
+<div class="actionRow">
+ <button id="openBracket" type="button">Avaa ottelukaavio</button>
+ <button id="copyBracket" class="secondary" type="button">Kopioi kaavion OBS-osoite</button>
+</div>
+<div id="bracketUrl" class="linkPreview">Ottelukaavion osoite muodostetaan valintojen perusteella.</div>
+<div id="diagramStatus" class="standingsStatus">Tapahtumatunniste on valmiiksi asetettu esimerkkikilpailuun EVE#sml26p0426. Voit vaihtaa sen tai käyttää yllä valittua kilpailua.</div>
+</section>
 </div></div>
 <script>
 const $=id=>document.getElementById(id);let events=[],games=[],playerNames={};const localDate=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};$('date').value=localDate();$('token').value=sessionStorage.getItem('dartsControlToken')||'';
@@ -79,4 +104,33 @@ $('standingsCategory').addEventListener('change',loadStandingsGroups);$('standin
 $('openStandings').addEventListener('click',()=>{const url=makeStandingsUrl();window.open(url,'_blank','noopener');$('standingsStatus').textContent='Sarjataulukko avattiin uuteen välilehteen. Sama osoite toimii OBS Browser Source -lähteen URL-osoitteena.'});
 $('copyStandings').addEventListener('click',async()=>{const url=makeStandingsUrl();try{await navigator.clipboard.writeText(url);$('standingsStatus').textContent='OBS-osoite kopioitu leikepöydälle: '+url}catch(e){$('standingsStatus').textContent='Kopiointi ei onnistunut tässä selaimessa. Kopioi osoite alla olevasta kentästä.'}});
 loadStandingsGroups();
+
+// Ottelupäivän kaksi erillistä näkymää. EventId on sama kuin valitun Kisailu-kilpailun Id.
+function diagramConfig(){
+ const id=$('diagramEventId').value.trim();
+ const width=Math.max(900,Math.min(5000,Number($('diagramWidth').value)||1920));
+ const scale=Math.max(50,Math.min(200,Number($('diagramScale').value)||100));
+ const refresh=Math.max(3,Math.min(60,Number($('diagramRefresh').value)||10));
+ return {id,width,scale,refresh};
+}
+function diagramUrl(file){
+ const c=diagramConfig();const q=new URLSearchParams();q.set('event',c.id);q.set('width',String(c.width));q.set('scale',String(c.scale));q.set('refresh',String(c.refresh));
+ return new URL(file+'?'+q.toString(),location.href).href;
+}
+function updateDiagramUrls(){
+ $('matchOrderUrl').textContent=diagramUrl('darts-tv-ottelulista.html');
+ $('bracketUrl').textContent=diagramUrl('darts-tv-kaavio.html');
+}
+$('useSelectedDiagramEvent').addEventListener('click',()=>{
+ const id=$('event').value;
+ if(!id){$('diagramStatus').textContent='Valitse ensin kilpailu yllä olevasta Kilpailu / sarja -valikosta.';return;}
+ $('diagramEventId').value=id;updateDiagramUrls();$('diagramStatus').textContent='Käytössä on valittu kilpailu: '+id;
+});
+['diagramEventId','diagramWidth','diagramScale','diagramRefresh'].forEach(id=>$(id).addEventListener('input',updateDiagramUrls));
+$('openMatchOrder').addEventListener('click',()=>{const c=diagramConfig();if(!/^EVE#[A-Za-z0-9_-]+$/.test(c.id)){$('diagramStatus').textContent='Tarkista EventId-muoto. Sen pitää alkaa EVE#.';return;}window.open(diagramUrl('darts-tv-ottelulista.html'),'_blank','noopener');$('diagramStatus').textContent='Ottelujärjestys avattiin. Sama osoite toimii OBS Browser Source -lähteen URL-osoitteena.';});
+$('openBracket').addEventListener('click',()=>{const c=diagramConfig();if(!/^EVE#[A-Za-z0-9_-]+$/.test(c.id)){$('diagramStatus').textContent='Tarkista EventId-muoto. Sen pitää alkaa EVE#.';return;}window.open(diagramUrl('darts-tv-kaavio.html'),'_blank','noopener');$('diagramStatus').textContent='Ottelukaavio avattiin. Sama osoite toimii OBS Browser Source -lähteen URL-osoitteena.';});
+async function copyDiagramUrl(file){const c=diagramConfig();if(!/^EVE#[A-Za-z0-9_-]+$/.test(c.id)){$('diagramStatus').textContent='Tarkista EventId-muoto. Sen pitää alkaa EVE#.';return;}const url=diagramUrl(file);try{await navigator.clipboard.writeText(url);$('diagramStatus').textContent='OBS-osoite kopioitu: '+url;}catch(e){$('diagramStatus').textContent='Kopiointi ei onnistunut. Kopioi osoite alla olevasta kentästä: '+url;}}
+$('copyMatchOrder').addEventListener('click',()=>copyDiagramUrl('darts-tv-ottelulista.html'));
+$('copyBracket').addEventListener('click',()=>copyDiagramUrl('darts-tv-kaavio.html'));
+updateDiagramUrls();
 </script></body></html>

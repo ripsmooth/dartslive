@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Darts TV – ottelujärjestys</title>
+<style>
+:root{--yellow:#ffe500;--green:#00f52d;--bg:#070c0f;--panel:#121c22;--line:#344149;--white:#f6f8f9;--muted:#aab5ba}
+*{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;background:transparent;color:var(--white);font-family:Arial,Helvetica,sans-serif}
+body{overflow:auto;padding:22px}.wrap{width:min(var(--content-width,1800px),100%);margin:0 auto;transform:scale(var(--scale,1));transform-origin:top center}
+header{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:3px solid var(--green);padding:0 0 13px;margin-bottom:14px}
+h1{margin:0;color:var(--yellow);font-size:clamp(25px,2.1vw,42px);font-weight:950;letter-spacing:.5px;text-transform:uppercase}.subtitle{color:var(--muted);font-size:14px;margin-top:5px}.liveinfo{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:900;text-align:right;white-space:nowrap}.dot{width:9px;height:9px;border-radius:50%;background:var(--green);display:inline-block;box-shadow:0 0 10px #00f52d88}
+#content{display:grid;grid-template-columns:1fr;gap:8px}.match{display:grid;grid-template-columns:74px minmax(0,1fr) 110px 130px;align-items:center;gap:14px;background:linear-gradient(100deg,#152126f5,#080e12f5);border:1px solid var(--line);border-left:5px solid #66747c;border-radius:7px;min-height:82px;padding:10px 17px;box-shadow:0 3px 10px #0004}.match.live{border-left-color:var(--yellow);box-shadow:0 0 0 1px #ffe50033,0 3px 12px #0006}.match.done{border-left-color:var(--green)}.number{font-weight:950;font-size:30px;color:var(--yellow);font-variant-numeric:tabular-nums}.pair{min-width:0;display:grid;grid-template-columns:minmax(0,1fr) 45px;gap:4px 12px;align-items:center}.team{font-size:clamp(16px,1.3vw,23px);font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.score{grid-column:2;grid-row:1/3;align-self:center;text-align:center;color:var(--green);font-size:25px;font-weight:950;white-space:nowrap}.stage{text-align:center;color:var(--muted);font-size:13px;font-weight:800;white-space:normal}.state{text-align:right;font-size:12px;font-weight:950;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}.state.live{color:var(--yellow)}.state.done{color:var(--green)}.board{margin-top:5px;color:var(--muted);font-size:11px;text-align:center}.error{background:#291719;border:1px solid #a33;color:#ffd9d9;padding:24px;border-radius:8px;font-size:18px}
+footer{margin-top:12px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:12px}
+@media(max-width:850px){body{padding:10px}.match{grid-template-columns:52px minmax(0,1fr) 90px;gap:9px;padding:9px 10px}.stage{display:none}.number{font-size:24px}.team{font-size:16px}.score{font-size:20px}.state{font-size:10px}}
+</style></head><body><div class="wrap" id="wrap"><header><div><h1>OTTELUJÄRJESTYS</h1><div class="subtitle" id="eventTitle">Kisailu · haetaan kilpailua…</div></div><div class="liveinfo"><span id="connection" class="good"><i class="dot"></i> LIVE-DATA</span><span id="status">Haetaan otteluita…</span></div></header><main id="content"></main><footer><span>Ottelut Kisailu.netin järjestyksessä</span><span id="refreshInfo"></span></footer></div>
+<script>
+
+const params=new URLSearchParams(location.search);
+const eventId=(params.get('event')||params.get('eventId')||'EVE#sml26p0426').trim();
+const refreshMs=Math.max(3000,Math.min(60000,(Number(params.get('refresh'))||10)*1000));
+const scale=Math.max(50,Math.min(200,Number(params.get('scale'))||100))/100;
+const width=Math.max(900,Math.min(5000,Number(params.get('width'))||1920));
+const $=id=>document.getElementById(id);
+let games=[],players={},eventTitle=eventId,refreshTimer=null,inFlight=false,lastUpdated=null;
+const decodeGame=item=>{
+  const raw=item?.GameData;
+  if(typeof raw!=='string')return raw||item;
+  const id=String(item.Id??item.id??'');
+  try{
+    const bytes=new Uint8Array(raw.match(/.{2}/g).map(x=>parseInt(x,16)));
+    const out=new Uint8Array(bytes.length);
+    for(let i=0;i<bytes.length;i++)out[i]=bytes[i]^id.charCodeAt(i%id.length);
+    return JSON.parse(new TextDecoder().decode(out));
+  }catch(e){console.warn('Ottelun datan purku epäonnistui',id,e);return {};}
+};
+const normalize=item=>{
+  const d=decodeGame(item);
+  return {...d,apiId:item?.Id??item?.id??d.Id??d.GameId??d.GameID,EndTime:d.EndTime??0};
+};
+function extractPlayers(data){
+  const root=data?.EventData||data?.eventData||data;
+  const src=root?.GamePlayers??root?.gamePlayers??root?.Players??root?.players;
+  const out={};
+  if(Array.isArray(src))src.forEach((p,i)=>{
+    if(typeof p==='string'){out[String(i)]=p;return;}
+    if(!p)return;
+    const name=String(p.Name??p.name??p.DisplayName??p.displayName??p.Title??p.title??('Pelaaja '+i));
+    out[String(p.index??p.Index??i)]=name;
+    if(p.id??p.Id)out[String(p.id??p.Id)]=name;
+  });
+  else if(src&&typeof src==='object')for(const [k,p] of Object.entries(src)){
+    out[String(k)]=typeof p==='string'?p:String(p?.Name??p?.name??p?.DisplayName??p?.displayName??p?.Title??p?.title??p);
+  }
+  return out;
+}
+function playerName(g,i){
+  const p=(g.players||[])[i];
+  if(p===undefined||p===null||Number(p)<0||Number(p)===40)return 'Odottaa jatkoonmenijää';
+  return players[String(p)]||('Pelaaja '+p);
+}
+function stageCode(g){return String(g.r??g.round??g.Round??'').trim().toUpperCase();}
+function stageName(g){
+  const custom=String(g.d??'').trim();
+  if(custom&&custom!=='-'&&!/^[AB]$/i.test(custom))return custom;
+  const map={AQF:'A-puolivälierät',ASF:'A-välierät',AF:'A-finaali',BQF:'B-puolivälierät',BSF:'B-välierät',BF:'B-finaali',GF:'Finaali',B1:'B-lohkon ottelut',AQ:'A-lohkon ottelut',BQ:'B-lohkon ottelut'};
+  return map[stageCode(g)]||('Vaihe '+(stageCode(g)||'—'));
+}
+function gameStatus(g){
+  const s=Number(g.status??g.Status);
+  if(s===2&&!(Number(g.EndTime)>0))return 'live';
+  if(Number(g.EndTime)>0||s===4)return 'done';
+  return 'waiting';
+}
+function scoreText(g){
+  const w=Array.isArray(g.wins)?g.wins:null;
+  if(!w||w.length<2)return '–';
+  if(gameStatus(g)==='waiting'&&!w.some(v=>Number(v)>0))return '–';
+  return `${Number(w[0])||0} – ${Number(w[1])||0}`;
+}
+function boardText(g){
+  const num=g.gameSpot?.Number??g.gameSpot?.number;
+  const start=Number(g.StartTime);
+  const clock=Number.isFinite(start)&&start>1000000000000?new Date(start).toLocaleTimeString('fi-FI',{hour:'2-digit',minute:'2-digit'}):'';
+  return [num!==undefined&&num!==null?`Taulu ${num}`:'',clock?`Klo ${clock}`:''].filter(Boolean).join(' · ');
+}
+function gameOrder(g,index){
+  const id=Number(g.id);
+  return Number.isFinite(id)?id+1:index+1;
+}
+function sortByOrder(arr){
+  return arr.map((g,i)=>({g,i})).sort((a,b)=>{
+    const ai=Number(a.g.id),bi=Number(b.g.id);
+    if(Number.isFinite(ai)&&Number.isFinite(bi)&&ai!==bi)return ai-bi;
+    return a.i-b.i;
+  }).map(x=>x.g);
+}
+async function loadEventNames(){
+  try{
+    const r=await fetch('/api/event?id='+encodeURIComponent(eventId)+'&ts='+Date.now(),{cache:'no-store'});
+    if(!r.ok)return;
+    const detail=await r.json();
+    const root=detail?.EventData||detail?.eventData||detail;
+    players=extractPlayers(detail);
+    eventTitle=String(root?.Title??root?.title??root?.Name??root?.name??root?.EventName??eventId);
+  }catch(e){console.warn('Kilpailun tietojen haku epäonnistui',e);}
+}
+async function fetchGames(){
+  const r=await fetch('/api/diagram',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({eventId}),cache:'no-store'});
+  if(!r.ok){let d={};try{d=await r.json()}catch{};throw Error(d.error||`Otteluhaku HTTP ${r.status}`)}
+  const data=await r.json();
+  if(!Array.isArray(data))throw Error('Kisailu palautti odottamattoman ottelulistan rakenteen.');
+  return sortByOrder(data.map(normalize));
+}
+async function refreshData(){
+  if(inFlight)return;inFlight=true;
+  try{
+    if(!Object.keys(players).length)await loadEventNames();
+    const next=await fetchGames();
+    games=next;lastUpdated=new Date();render();
+    $('status').textContent=`${eventTitle} · ${games.length} ottelua · päivitetty ${lastUpdated.toLocaleTimeString('fi-FI')}`;
+    $('connection').textContent='LIVE-DATA';$('connection').className='good';
+  }catch(e){
+    $('connection').textContent='YHTEYSVIRHE';$('connection').className='bad';
+    $('status').textContent=e.message+(lastUpdated?' · näytetään viimeisin onnistunut data':'');
+    if(!games.length)$('content').innerHTML=`<div class="error">Ottelutietoja ei saatu haettua.<br>${escapeHtml(e.message)}</div>`;
+  }finally{inFlight=false;}
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function startRefresh(){clearInterval(refreshTimer);refreshTimer=setInterval(refreshData,refreshMs);}
+window.addEventListener('resize',()=>{if(window.renderCurrent)window.renderCurrent()});
+
+function render(){
+  $('eventTitle').textContent=eventTitle;
+  $('refreshInfo').textContent=`Automaattipäivitys ${Math.round(refreshMs/1000)} s`;
+  const rows=games.map((g,i)=>{
+    const st=gameStatus(g),names=[playerName(g,0),playerName(g,1)],order=gameOrder(g,i),label=stageName(g),score=scoreText(g),board=boardText(g);
+    const state=st==='live'?'Käynnissä':st==='done'?'Päättynyt':'Tulossa';
+    return `<article class="match ${st}"><div class="number">${String(order).padStart(2,'0')}</div><div class="pair"><div class="team">${escapeHtml(names[0])}</div><div class="team">${escapeHtml(names[1])}</div><div class="score">${escapeHtml(score)}</div></div><div><div class="stage">${escapeHtml(label)}</div><div class="board">${escapeHtml(board)}</div></div><div class="state ${st}">${state}</div></article>`;
+  });
+  $('content').innerHTML=rows.join('')||'<div class="error">Tälle kilpailulle ei löytynyt otteluita.</div>';
+}
+window.renderCurrent=render;
+$('wrap').style.setProperty('--content-width',width+'px');$('wrap').style.setProperty('--scale',String(scale));
+refreshData();startRefresh();
+</script></body></html>

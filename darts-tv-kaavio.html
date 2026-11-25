@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="fi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Darts TV – ottelukaavio</title>
+<style>
+:root{--yellow:#ffe500;--green:#00f52d;--bg:#070c0f;--panel:#121c22;--line:#344149;--white:#f6f8f9;--muted:#aab5ba}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:transparent;color:var(--white);font-family:Arial,Helvetica,sans-serif;overflow:auto}
+body{padding:18px}.top{width:var(--board-width,2200px);margin:0 auto 12px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:3px solid var(--green);padding-bottom:12px}h1{margin:0;color:var(--yellow);font-size:36px;font-weight:950;text-transform:uppercase;letter-spacing:.5px}.subtitle{font-size:13px;color:var(--muted);margin-top:4px}.info{font-size:12px;font-weight:900;color:var(--muted);text-align:right}.good{color:var(--green)}.bad{color:#ff6a6a}
+#content{width:var(--board-width,2200px);margin:0 auto;overflow:auto;padding:5px 0 20px}.stage{position:relative;min-width:100%;background:linear-gradient(145deg,#0c1419e8,#05090ce8);border:1px solid #3b474e;border-radius:10px;overflow:hidden}.stage:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:100px 100px;pointer-events:none}.wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}.wires path{fill:none;stroke:#88969d;stroke-width:3;opacity:.62}.wires path.feed{stroke:var(--green);stroke-width:4;opacity:.82}.game{position:absolute;width:248px;min-height:112px;transform:translate(-50%,-50%);border:1px solid #57636a;border-left:5px solid #74818a;border-radius:7px;background:linear-gradient(110deg,#18242a,#080e12);box-shadow:0 6px 15px #0008;overflow:hidden;z-index:2}.game.live{border-left-color:var(--yellow);box-shadow:0 0 0 1px #ffe50040,0 6px 18px #0009}.game.done{border-left-color:var(--green)}.ghead{display:flex;justify-content:space-between;align-items:center;padding:6px 9px;background:#1d2a31;border-bottom:1px solid #35434a;gap:7px}.round{font-size:10px;font-weight:950;color:var(--yellow);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.state{font-size:9px;font-weight:950;color:var(--muted);text-transform:uppercase;white-space:nowrap}.state.live{color:var(--yellow)}.state.done{color:var(--green)}.side{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px 4px;font-size:13px;font-weight:900;min-width:0}.side:last-child{padding:4px 10px 9px}.name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.score{color:var(--green);font-size:15px;font-weight:950;min-width:20px;text-align:right}.gfoot{padding:4px 10px 6px;color:var(--muted);font-size:9px;text-align:right}.empty{padding:35px;background:#251719;color:#ffd9d9;border:1px solid #9b4545;border-radius:8px;font-size:18px}
+@media(max-width:1000px){body{padding:8px}.top h1{font-size:25px}.game{width:210px}.side{font-size:11px}}
+</style></head><body><header class="top"><div><h1>OTTELUKAAVIO</h1><div class="subtitle" id="eventTitle">Kisailu · haetaan kilpailua…</div></div><div class="info"><span id="connection" class="good">LIVE-DATA</span><br><span id="status">Haetaan otteluita…</span></div></header><main id="content"></main>
+<script>
+
+const params=new URLSearchParams(location.search);
+const eventId=(params.get('event')||params.get('eventId')||'EVE#sml26p0426').trim();
+const refreshMs=Math.max(3000,Math.min(60000,(Number(params.get('refresh'))||10)*1000));
+const scale=Math.max(50,Math.min(200,Number(params.get('scale'))||100))/100;
+const width=Math.max(900,Math.min(5000,Number(params.get('width'))||1920));
+const $=id=>document.getElementById(id);
+let games=[],players={},eventTitle=eventId,refreshTimer=null,inFlight=false,lastUpdated=null;
+const decodeGame=item=>{
+  const raw=item?.GameData;
+  if(typeof raw!=='string')return raw||item;
+  const id=String(item.Id??item.id??'');
+  try{
+    const bytes=new Uint8Array(raw.match(/.{2}/g).map(x=>parseInt(x,16)));
+    const out=new Uint8Array(bytes.length);
+    for(let i=0;i<bytes.length;i++)out[i]=bytes[i]^id.charCodeAt(i%id.length);
+    return JSON.parse(new TextDecoder().decode(out));
+  }catch(e){console.warn('Ottelun datan purku epäonnistui',id,e);return {};}
+};
+const normalize=item=>{
+  const d=decodeGame(item);
+  return {...d,apiId:item?.Id??item?.id??d.Id??d.GameId??d.GameID,EndTime:d.EndTime??0};
+};
+function extractPlayers(data){
+  const root=data?.EventData||data?.eventData||data;
+  const src=root?.GamePlayers??root?.gamePlayers??root?.Players??root?.players;
+  const out={};
+  if(Array.isArray(src))src.forEach((p,i)=>{
+    if(typeof p==='string'){out[String(i)]=p;return;}
+    if(!p)return;
+    const name=String(p.Name??p.name??p.DisplayName??p.displayName??p.Title??p.title??('Pelaaja '+i));
+    out[String(p.index??p.Index??i)]=name;
+    if(p.id??p.Id)out[String(p.id??p.Id)]=name;
+  });
+  else if(src&&typeof src==='object')for(const [k,p] of Object.entries(src)){
+    out[String(k)]=typeof p==='string'?p:String(p?.Name??p?.name??p?.DisplayName??p?.displayName??p?.Title??p?.title??p);
+  }
+  return out;
+}
+function playerName(g,i){
+  const p=(g.players||[])[i];
+  if(p===undefined||p===null||Number(p)<0||Number(p)===40)return 'Odottaa jatkoonmenijää';
+  return players[String(p)]||('Pelaaja '+p);
+}
+function stageCode(g){return String(g.r??g.round??g.Round??'').trim().toUpperCase();}
+function stageName(g){
+  const custom=String(g.d??'').trim();
+  if(custom&&custom!=='-'&&!/^[AB]$/i.test(custom))return custom;
+  const map={AQF:'A-puolivälierät',ASF:'A-välierät',AF:'A-finaali',BQF:'B-puolivälierät',BSF:'B-välierät',BF:'B-finaali',GF:'Finaali',B1:'B-lohkon ottelut',AQ:'A-lohkon ottelut',BQ:'B-lohkon ottelut'};
+  return map[stageCode(g)]||('Vaihe '+(stageCode(g)||'—'));
+}
+function gameStatus(g){
+  const s=Number(g.status??g.Status);
+  if(s===2&&!(Number(g.EndTime)>0))return 'live';
+  if(Number(g.EndTime)>0||s===4)return 'done';
+  return 'waiting';
+}
+function scoreText(g){
+  const w=Array.isArray(g.wins)?g.wins:null;
+  if(!w||w.length<2)return '–';
+  if(gameStatus(g)==='waiting'&&!w.some(v=>Number(v)>0))return '–';
+  return `${Number(w[0])||0} – ${Number(w[1])||0}`;
+}
+function boardText(g){
+  const num=g.gameSpot?.Number??g.gameSpot?.number;
+  return num!==undefined&&num!==null?`Taulu ${num}`:'';
+}
+function gameOrder(g,index){
+  const id=Number(g.id);
+  return Number.isFinite(id)?id+1:index+1;
+}
+function sortByOrder(arr){
+  return arr.map((g,i)=>({g,i})).sort((a,b)=>{
+    const ai=Number(a.g.id),bi=Number(b.g.id);
+    if(Number.isFinite(ai)&&Number.isFinite(bi)&&ai!==bi)return ai-bi;
+    return a.i-b.i;
+  }).map(x=>x.g);
+}
+async function loadEventNames(){
+  try{
+    const r=await fetch('/api/event?id='+encodeURIComponent(eventId)+'&ts='+Date.now(),{cache:'no-store'});
+    if(!r.ok)return;
+    const detail=await r.json();
+    const root=detail?.EventData||detail?.eventData||detail;
+    players=extractPlayers(detail);
+    eventTitle=String(root?.Title??root?.title??root?.Name??root?.name??root?.EventName??eventId);
+  }catch(e){console.warn('Kilpailun tietojen haku epäonnistui',e);}
+}
+async function fetchGames(){
+  const r=await fetch('/api/diagram',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({eventId}),cache:'no-store'});
+  if(!r.ok){let d={};try{d=await r.json()}catch{};throw Error(d.error||`Otteluhaku HTTP ${r.status}`)}
+  const data=await r.json();
+  if(!Array.isArray(data))throw Error('Kisailu palautti odottamattoman ottelulistan rakenteen.');
+  return sortByOrder(data.map(normalize));
+}
+async function refreshData(){
+  if(inFlight)return;inFlight=true;
+  try{
+    if(!Object.keys(players).length)await loadEventNames();
+    const next=await fetchGames();
+    games=next;lastUpdated=new Date();render();
+    $('status').textContent=`${eventTitle} · ${games.length} ottelua · päivitetty ${lastUpdated.toLocaleTimeString('fi-FI')}`;
+    $('connection').textContent='LIVE-DATA';$('connection').className='good';
+  }catch(e){
+    $('connection').textContent='YHTEYSVIRHE';$('connection').className='bad';
+    $('status').textContent=e.message+(lastUpdated?' · näytetään viimeisin onnistunut data':'');
+    if(!games.length)$('content').innerHTML=`<div class="error">Ottelutietoja ei saatu haettua.<br>${escapeHtml(e.message)}</div>`;
+  }finally{inFlight=false;}
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function startRefresh(){clearInterval(refreshTimer);refreshTimer=setInterval(refreshData,refreshMs);}
+window.addEventListener('resize',()=>{if(window.renderCurrent)window.renderCurrent()});
+
+const cardW=248,cardH=112;
+function render(){
+  $('eventTitle').textContent=eventTitle;
+  if(!games.length){$('content').innerHTML='<div class="empty">Tälle kilpailulle ei löytynyt ottelukaavion otteluita.</div>';return;}
+  const valid=games.filter(g=>Number.isFinite(Number(g.x))&&Number.isFinite(Number(g.y)));
+  const minX=valid.length?Math.min(...valid.map(g=>Number(g.x))):0,maxX=valid.length?Math.max(...valid.map(g=>Number(g.x))):10000;
+  const minY=valid.length?Math.min(...valid.map(g=>Number(g.y))):0,maxY=valid.length?Math.max(...valid.map(g=>Number(g.y))):10000;
+  const stageW=width,stageH=Math.max(1000,Math.min(4200,(maxY-minY||6000)*0.24+260));
+  const coords=new Map();
+  games.forEach((g,i)=>{
+    let cx,cy;
+    if(Number.isFinite(Number(g.x))&&Number.isFinite(Number(g.y))&&valid.length){
+      const xr=(Number(g.x)-minX)/(maxX-minX||1),yr=(Number(g.y)-minY)/(maxY-minY||1);
+      cx=cardW/2+30+xr*(stageW-cardW-60);cy=cardH/2+100+yr*(stageH-cardH-150);
+    }else{
+      const col=i%5,row=Math.floor(i/5);cx=cardW/2+30+col*(stageW-cardW-60)/4;cy=cardH/2+100+row*180;
+    }
+    coords.set(String(g.id??i),{cx,cy,g,i});
+  });
+  const edges=[];
+  games.forEach((target,i)=>{
+    const dep=Number(target.needs_opponent_push);
+    if(Number.isInteger(dep)&&dep>=0&&coords.has(String(dep))){
+      const a=coords.get(String(dep)),b=coords.get(String(target.id??i));
+      if(a&&b&&a!==b){
+        const dir=b.cx>=a.cx?1:-1,x1=a.cx+dir*(cardW/2-2),x2=b.cx-dir*(cardW/2-2),y1=a.cy,y2=b.cy;
+        const bend=Math.max(45,Math.abs(x2-x1)*.45);
+        const c1=x1+dir*bend,c2=x2-dir*bend;
+        edges.push(`<path class="feed" d="M ${x1} ${y1} C ${c1} ${y1}, ${c2} ${y2}, ${x2} ${y2}"/>`);
+      }
+    }
+  });
+  const wireSvg=`<svg class="wires" viewBox="0 0 ${stageW} ${stageH}" preserveAspectRatio="none">${edges.join('')}</svg>`;
+  const cards=games.map((g,i)=>{
+    const c=coords.get(String(g.id??i)),st=gameStatus(g),names=[playerName(g,0),playerName(g,1)],score=scoreText(g),board=boardText(g);
+    const state=st==='live'?'Käynnissä':st==='done'?'Päättynyt':'Tulossa';
+    return `<article class="game ${st}" style="left:${c.cx}px;top:${c.cy}px"><div class="ghead"><span class="round">${escapeHtml(stageName(g))}</span><span class="state ${st}">${state}</span></div><div class="side"><span class="name">${escapeHtml(names[0])}</span><span class="score">${escapeHtml(score==='–'?'':score.split(' – ')[0])}</span></div><div class="side"><span class="name">${escapeHtml(names[1])}</span><span class="score">${escapeHtml(score==='–'?'':score.split(' – ')[1])}</span></div><div class="gfoot">${escapeHtml(board)} · #${gameOrder(g,i)}</div></article>`;
+  }).join('');
+  $('content').innerHTML=`<div class="stage" style="width:${stageW}px;height:${stageH}px">${wireSvg}${cards}</div>`;
+}
+window.renderCurrent=render;
+document.documentElement.style.setProperty('--board-width',width+'px');
+$('content').style.setProperty('--board-width',width+'px');
+refreshData();startRefresh();
+</script></body></html>

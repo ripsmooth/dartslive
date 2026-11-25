@@ -105,3 +105,12 @@ Sarjataulukon URL-parametrit:
 - &lohko=all : näyttää kaikki lohkot (oletus)
 
 Huomaa: usean lohkon näyttäminen peräkkäin kasvattaa sivun korkeutta. OBS Browser Source -lähteen korkeutta voi kasvattaa, tai yksittäisen lohkon voi näyttää lohko-parametrilla.
+
+
+OTTELUPAIVAN KAAVIO JA OTTELUJARJESTYS
+- darts-tv-ottelulista.html: kaikki tapahtuman ottelut Kisailun palauttamassa id-jarjestyksessa.
+- darts-tv-kaavio.html: graafinen ottelukaavio, joka sijoittaa ottelukortit GameData.x- ja GameData.y-koordinaattien mukaan ja piirtää yhteydet, kun needs_opponent_push kertoo edeltavan ottelun.
+- api/diagram.js: erillinen game/getall-valityspalvelin; pyynto sisaltaa EventId, Now ja Delta:false. Vanha api/live.js ja tulostaulun kysely pysyvat muuttumattomina.
+- index.html: ohjaus molempiin nakymiin, EventId, leveys, skaalaus ja paivitysvali.
+Esimerkkitapahtuma: EVE#sml26p0426. URL-parametrit: event, width, scale, refresh.
+Huomaa: tarkka tapahtuman otteludata tulee Kisailusta vasta Vercel-julkaisun jalkeen. Taulukon ja listan renderointia ei ole voitu testata verkon yli tassa tyoymparistossa.
