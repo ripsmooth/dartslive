@@ -1,12 +1,15 @@
 <!doctype html>
 <html lang="fi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Darts TV – ottelukaavio</title>
 <style>
-:root{--yellow:#ffe500;--green:#00f52d;--bg:#070c0f;--panel:#121c22;--line:#344149;--white:#f6f8f9;--muted:#aab5ba}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:transparent;color:var(--white);font-family:Arial,Helvetica,sans-serif;overflow:auto}
-body{padding:18px}.top{width:var(--board-width,2200px);margin:0 auto 12px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:3px solid var(--green);padding-bottom:12px}h1{margin:0;color:var(--yellow);font-size:36px;font-weight:950;text-transform:uppercase;letter-spacing:.5px}.subtitle{font-size:13px;color:var(--muted);margin-top:4px}.info{font-size:12px;font-weight:900;color:var(--muted);text-align:right}.good{color:var(--green)}.bad{color:#ff6a6a}
-#content{width:var(--board-width,2200px);margin:0 auto;overflow:auto;padding:5px 0 20px}.stage{position:relative;min-width:100%;background:linear-gradient(145deg,#0c1419e8,#05090ce8);border:1px solid #3b474e;border-radius:10px;overflow:hidden}.stage:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:100px 100px;pointer-events:none}.wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}.wires path{fill:none;stroke:#88969d;stroke-width:3;opacity:.62}.wires path.feed{stroke:var(--green);stroke-width:4;opacity:.82}.game{position:absolute;width:248px;min-height:112px;transform:translate(-50%,-50%);border:1px solid #57636a;border-left:5px solid #74818a;border-radius:7px;background:linear-gradient(110deg,#18242a,#080e12);box-shadow:0 6px 15px #0008;overflow:hidden;z-index:2}.game.live{border-left-color:var(--yellow);box-shadow:0 0 0 1px #ffe50040,0 6px 18px #0009}.game.done{border-left-color:var(--green)}.ghead{display:flex;justify-content:space-between;align-items:center;padding:6px 9px;background:#1d2a31;border-bottom:1px solid #35434a;gap:7px}.round{font-size:10px;font-weight:950;color:var(--yellow);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.state{font-size:9px;font-weight:950;color:var(--muted);text-transform:uppercase;white-space:nowrap}.state.live{color:var(--yellow)}.state.done{color:var(--green)}.side{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px 4px;font-size:13px;font-weight:900;min-width:0}.side:last-child{padding:4px 10px 9px}.name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.score{color:var(--green);font-size:15px;font-weight:950;min-width:20px;text-align:right}.gfoot{padding:4px 10px 6px;color:var(--muted);font-size:9px;text-align:right}.empty{padding:35px;background:#251719;color:#ffd9d9;border:1px solid #9b4545;border-radius:8px;font-size:18px}
-@media(max-width:1000px){body{padding:8px}.top h1{font-size:25px}.game{width:210px}.side{font-size:11px}}
-</style></head><body><header class="top"><div><h1>OTTELUKAAVIO</h1><div class="subtitle" id="eventTitle">Kisailu · haetaan kilpailua…</div></div><div class="info"><span id="connection" class="good">LIVE-DATA</span><br><span id="status">Haetaan otteluita…</span></div></header><main id="content"></main>
+:root{--yellow:#ffe500;--green:#00f52d;--bg:#05090b;--line:#344047;--white:#f7f9fa;--muted:#aab5ba}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent;color:var(--white);font-family:Arial,Helvetica,sans-serif}
+#screen{position:absolute;left:50%;top:50%;width:var(--board-width,1920px);height:1080px;padding:24px 30px 18px;display:flex;flex-direction:column;transform-origin:center center}
+.top{height:82px;flex:0 0 82px;display:flex;justify-content:space-between;align-items:center;gap:24px;border-bottom:3px solid var(--green);padding-bottom:13px}.titleline{display:flex;align-items:center;gap:15px;min-width:0}.titlebadge{display:inline-flex;align-items:center;min-height:42px;padding:0 17px;background:var(--yellow);color:#05090b;font-size:30px;line-height:1;font-weight:950;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}.subtitle{max-width:780px;color:var(--white);font-size:17px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.info{display:flex;align-items:center;gap:14px;font-size:12px;font-weight:900;color:var(--muted);text-align:right;white-space:nowrap}.good{color:var(--green)}.bad{color:#ff6a6a}
+#content{position:relative;height:0;flex:1 1 auto;min-height:0;margin-top:13px;border:1px solid #344047;border-top:2px solid var(--yellow);border-bottom:3px solid var(--green);background:linear-gradient(145deg,#0c1419e8,#05090ce8);overflow:hidden}
+#content:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:100px 100px;pointer-events:none}.wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1}.wires path{fill:none;stroke:#829098;stroke-width:2.4;opacity:.64}.wires path.feed{stroke:var(--green);stroke-width:3.2;opacity:.86}
+.game{position:absolute;transform:translate(-50%,-50%);width:var(--card-width,220px);height:var(--card-height,62px);display:flex;flex-direction:column;overflow:hidden;z-index:2;background:linear-gradient(110deg,#172126,#080d10);border:1px solid #46535a;border-top:2px solid var(--yellow);border-bottom:2px solid var(--green);box-shadow:0 3px 10px #0008}.game.live{border-top-color:var(--yellow);box-shadow:0 0 0 1px #ffe50035,0 4px 12px #0009}.game.waiting{border-top-color:#657178}.ghead{height:17px;flex:0 0 17px;display:flex;justify-content:space-between;align-items:center;padding:0 6px;background:#111c22;border-bottom:1px solid #344047;gap:6px}.round{min-width:0;font-size:9px;font-weight:950;color:var(--yellow);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.state{font-size:8px;font-weight:950;color:var(--muted);text-transform:uppercase;white-space:nowrap}.state.live{color:var(--yellow)}.state.done{color:var(--green)}.side{height:calc((100% - 17px)/2);min-height:0;display:flex;justify-content:space-between;align-items:center;gap:6px;padding:0 7px;font-size:clamp(8px,.68vw,12px);font-weight:900}.side+.side{border-top:1px solid #344047}.name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.score{color:var(--green);font-size:clamp(9px,.85vw,14px);font-weight:950;min-width:14px;text-align:right}.empty,.error{position:absolute;left:30px;right:30px;top:40%;padding:25px;background:#111c22;color:#ffd9d9;border:1px solid #a33;font-size:18px}
+footer{height:22px;flex:0 0 22px;display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:10px;font-weight:700;border-top:1px solid #344047;margin-top:6px;padding-top:5px}
+</style></head><body><div id="screen"><header class="top"><div class="titleline"><span class="titlebadge">OTTELUKAAVIO</span><span class="subtitle" id="eventTitle">Kisailu · haetaan kilpailua…</span></div><div class="info"><span id="connection" class="good">LIVE-DATA</span><span id="status">Haetaan otteluita…</span></div></header><main id="content"></main><footer><span>OTTELUKAAVIO · KISAILU.NET LIVE-DATA</span><span id="refreshInfo"></span></footer></div>
 <script>
 
 const params=new URLSearchParams(location.search);
@@ -121,48 +124,72 @@ function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':
 function startRefresh(){clearInterval(refreshTimer);refreshTimer=setInterval(refreshData,refreshMs);}
 window.addEventListener('resize',()=>{if(window.renderCurrent)window.renderCurrent()});
 
-const cardW=248,cardH=112;
+function fitCanvas(){
+  const designW=width||1920,designH=1080;
+  const fit=Math.min(window.innerWidth/designW,window.innerHeight/designH);
+  $('screen').style.transform=`translate(-50%,-50%) scale(${fit*Math.min(scale,1)})`;
+}
 function render(){
   $('eventTitle').textContent=eventTitle;
+  $('refreshInfo').textContent=`PÄIVITYS ${Math.round(refreshMs/1000)} S`;
   if(!games.length){$('content').innerHTML='<div class="empty">Tälle kilpailulle ei löytynyt ottelukaavion otteluita.</div>';return;}
-  const valid=games.filter(g=>Number.isFinite(Number(g.x))&&Number.isFinite(Number(g.y)));
-  const minX=valid.length?Math.min(...valid.map(g=>Number(g.x))):0,maxX=valid.length?Math.max(...valid.map(g=>Number(g.x))):10000;
-  const minY=valid.length?Math.min(...valid.map(g=>Number(g.y))):0,maxY=valid.length?Math.max(...valid.map(g=>Number(g.y))):10000;
-  const stageW=width,stageH=Math.max(1000,Math.min(4200,(maxY-minY||6000)*0.24+260));
-  const coords=new Map();
+
+  const valid=games.filter(g=>g.x!==undefined&&g.x!==null&&Number.isFinite(Number(g.x)));
+  const buckets=new Map();
   games.forEach((g,i)=>{
-    let cx,cy;
-    if(Number.isFinite(Number(g.x))&&Number.isFinite(Number(g.y))&&valid.length){
-      const xr=(Number(g.x)-minX)/(maxX-minX||1),yr=(Number(g.y)-minY)/(maxY-minY||1);
-      cx=cardW/2+30+xr*(stageW-cardW-60);cy=cardH/2+100+yr*(stageH-cardH-150);
-    }else{
-      const col=i%5,row=Math.floor(i/5);cx=cardW/2+30+col*(stageW-cardW-60)/4;cy=cardH/2+100+row*180;
-    }
-    coords.set(String(g.id??i),{cx,cy,g,i});
+    const key=valid.length&&g.x!==undefined&&g.x!==null&&Number.isFinite(Number(g.x))?String(Number(g.x)):'0';
+    if(!buckets.has(key))buckets.set(key,[]);
+    buckets.get(key).push({g,i});
   });
+  const columns=[...buckets.entries()].sort((a,b)=>Number(a[0])-Number(b[0]));
+  const count=columns.length,areaW=$('content').clientWidth||width-60,areaH=$('content').clientHeight||915,topPad=40,bottomPad=35;
+  const maxRows=Math.max(...columns.map(([,arr])=>arr.length));
+  const cardW=count<=2?Math.min(390,(areaW-(count-1)*30)/count):Math.min(250,(areaW-((count-1)*20))/count);
+  const slotH=(areaH-topPad-bottomPad)/Math.max(1,maxRows);
+  const cardH=Math.max(26,Math.min(78,slotH*.86));
+  const gap=(areaW-count*cardW)/Math.max(1,count-1);
+  const xCenters=columns.map((_,i)=>count===1?areaW/2:cardW/2+i*(cardW+gap));
+  const coords=new Map(),columnLabels=[];
+  columns.forEach(([key,items],col)=>{
+    items.sort((a,b)=>{
+      const ay=Number(a.g.y),by=Number(b.g.y);
+      if(Number.isFinite(ay)&&Number.isFinite(by)&&ay!==by)return ay-by;
+      const ai=Number(a.g.id),bi=Number(b.g.id);
+      return Number.isFinite(ai)&&Number.isFinite(bi)?ai-bi:a.i-b.i;
+    });
+    columnLabels.push({x:xCenters[col],label:stageName(items[0].g)});
+    items.forEach((item,row)=>{
+      const cy=topPad+(row+.5)*(areaH-topPad-bottomPad)/Math.max(1,items.length);
+      coords.set(String(item.g.id??item.i),{cx:xCenters[col],cy,g:item.g,i:item.i,col,row});
+    });
+  });
+
   const edges=[];
   games.forEach((target,i)=>{
-    const dep=Number(target.needs_opponent_push);
-    if(Number.isInteger(dep)&&dep>=0&&coords.has(String(dep))){
-      const a=coords.get(String(dep)),b=coords.get(String(target.id??i));
-      if(a&&b&&a!==b){
-        const dir=b.cx>=a.cx?1:-1,x1=a.cx+dir*(cardW/2-2),x2=b.cx-dir*(cardW/2-2),y1=a.cy,y2=b.cy;
-        const bend=Math.max(45,Math.abs(x2-x1)*.45);
-        const c1=x1+dir*bend,c2=x2-dir*bend;
-        edges.push(`<path class="feed" d="M ${x1} ${y1} C ${c1} ${y1}, ${c2} ${y2}, ${x2} ${y2}"/>`);
-      }
-    }
+    const raw=target.needs_opponent_push;
+    if(raw===undefined||raw===null||String(raw).trim()==='')return;
+    const dep=String(Number(raw));
+    const source=coords.get(dep),dest=coords.get(String(target.id??i));
+    if(!source||!dest||source===dest)return;
+    const dir=dest.cx>=source.cx?1:-1;
+    const x1=source.cx+dir*(cardW/2-1),x2=dest.cx-dir*(cardW/2-1),y1=source.cy,y2=dest.cy;
+    const bend=Math.max(24,Math.abs(x2-x1)*.42);
+    const c1=x1+dir*bend,c2=x2-dir*bend;
+    edges.push(`<path class="feed" d="M ${x1} ${y1} C ${c1} ${y1}, ${c2} ${y2}, ${x2} ${y2}"/>`);
   });
-  const wireSvg=`<svg class="wires" viewBox="0 0 ${stageW} ${stageH}" preserveAspectRatio="none">${edges.join('')}</svg>`;
+  const wireSvg=`<svg class="wires" viewBox="0 0 ${areaW} ${areaH}" preserveAspectRatio="none">${edges.join('')}</svg>`;
   const cards=games.map((g,i)=>{
-    const c=coords.get(String(g.id??i)),st=gameStatus(g),names=[playerName(g,0),playerName(g,1)],score=scoreText(g),board=boardText(g);
-    const state=st==='live'?'Käynnissä':st==='done'?'Päättynyt':'Tulossa';
-    return `<article class="game ${st}" style="left:${c.cx}px;top:${c.cy}px"><div class="ghead"><span class="round">${escapeHtml(stageName(g))}</span><span class="state ${st}">${state}</span></div><div class="side"><span class="name">${escapeHtml(names[0])}</span><span class="score">${escapeHtml(score==='–'?'':score.split(' – ')[0])}</span></div><div class="side"><span class="name">${escapeHtml(names[1])}</span><span class="score">${escapeHtml(score==='–'?'':score.split(' – ')[1])}</span></div><div class="gfoot">${escapeHtml(board)} · #${gameOrder(g,i)}</div></article>`;
+    const c=coords.get(String(g.id??i)),st=gameStatus(g),names=[playerName(g,0),playerName(g,1)],score=scoreText(g);
+    const parts=score==='–'?['','']:score.split(' – ');
+    const state=st==='live'?'KÄYNNISSÄ':st==='done'?'PÄÄTTYNYT':'TULOSSA';
+    return `<article class="game ${st}" style="left:${c.cx}px;top:${c.cy}px;--card-width:${cardW}px;--card-height:${cardH}px"><div class="ghead"><span class="round">${escapeHtml(stageName(g))}</span><span class="state ${st}">${state}</span></div><div class="side"><span class="name">${escapeHtml(names[0])}</span><span class="score">${escapeHtml(parts[0])}</span></div><div class="side"><span class="name">${escapeHtml(names[1])}</span><span class="score">${escapeHtml(parts[1])}</span></div></article>`;
   }).join('');
-  $('content').innerHTML=`<div class="stage" style="width:${stageW}px;height:${stageH}px">${wireSvg}${cards}</div>`;
+  $('content').innerHTML=wireSvg+cards;
+  fitCanvas();
 }
 window.renderCurrent=render;
 document.documentElement.style.setProperty('--board-width',width+'px');
-$('content').style.setProperty('--board-width',width+'px');
+window.addEventListener('resize',fitCanvas);
+fitCanvas();
 refreshData();startRefresh();
 </script></body></html>

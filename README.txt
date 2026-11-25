@@ -114,3 +114,10 @@ OTTELUPAIVAN KAAVIO JA OTTELUJARJESTYS
 - index.html: ohjaus molempiin nakymiin, EventId, leveys, skaalaus ja paivitysvali.
 Esimerkkitapahtuma: EVE#sml26p0426. URL-parametrit: event, width, scale, refresh.
 Huomaa: tarkka tapahtuman otteludata tulee Kisailusta vasta Vercel-julkaisun jalkeen. Taulukon ja listan renderointia ei ole voitu testata verkon yli tassa tyoymparistossa.
+
+
+GRAFIIKKAPÄIVITYS
+- Ottelujärjestys näyttää enintään 16 ottelua kerrallaan kahdeksan ottelun riveissä. Jos otteluita on yli 16, näkymä vaihtaa automaattisesti seuraavaan 16 ottelun sivuun.
+- Ottelujärjestyksessä näkyvät molempien pelaajien ottelukohtaiset 3 tikan keskiarvot. Laskenta käyttää samaa LegPoints/LegDarts-laskentaa kuin varsinainen live-tulostaulu.
+- Ottelujärjestys ja ottelukaavio sovitetaan automaattisesti 16:9-kuvaruutuun; sisältö ei vaadi selaamista.
+- Grafiikoiden värit ja paneelit noudattavat Darts TV -tulostaulun tummaa, keltaista ja vihreää tyyliä.
