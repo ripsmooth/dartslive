@@ -87,3 +87,21 @@ SARJATAULUKON ULKOASUN PÄIVITYS
 - Heitto ka. näytetään kolmen tikan keskiarvona: (TP / TD) * 3
 - Oletusfontteja ja rivikorkeutta suurennettu noin 20 %
 - URL-parametrit scale, width, refresh sekä sarja ja season säilyvät käytössä
+
+SARJATAULUKON LOHKOJAKO
+- Sarjataulukko ryhmittelee joukkueet erillisiksi taulukoiksi Kisailun EventDetails.Group-kentän perusteella.
+- Jokaisella lohkolla on oma otsikko (LOHKO 1, LOHKO 2 jne.) sekä oma sijoitusjärjestys.
+- Avoin 1. divisioona (M1): 2 lohkoa.
+- Avoin 2. divisioona (M2): 6 lohkoa.
+- Avoin 3. divisioona (M3): useita lohkoja; lohkoja voi rajata URL-parametrilla.
+- Naisten 1. divisioona (N1): lohkot näytetään samalla tavalla.
+- Oletuksena näytetään kaikki valitun sarjan lohkot.
+
+Sarjataulukon URL-parametrit:
+- ?sarja=M1 : avoin 1. divisioona, kaikki lohkot erillisinä taulukoina
+- ?sarja=M2 : avoin 2. divisioona, kaikki lohkot erillisinä taulukoina
+- ?sarja=M3&lohko=1 : näyttää vain avoimen 3. divisioonan lohkon 1
+- &lohko=2 : rajaa näkymän valitun sarjan lohkoon 2
+- &lohko=all : näyttää kaikki lohkot (oletus)
+
+Huomaa: usean lohkon näyttäminen peräkkäin kasvattaa sivun korkeutta. OBS Browser Source -lähteen korkeutta voi kasvattaa, tai yksittäisen lohkon voi näyttää lohko-parametrilla.

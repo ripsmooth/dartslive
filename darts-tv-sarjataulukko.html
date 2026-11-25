@@ -1,8 +1,8 @@
 <!DOCTYPE html><html lang="fi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Darts TV – Sarjataulukko</title><style>
-*{box-sizing:border-box}html,body{width:100%;min-height:100%;margin:0}body{min-height:100vh;background:transparent;font-family:Arial,Helvetica,sans-serif;color:#fff;display:flex;align-items:center;justify-content:center;padding:18px}.wrap{width:var(--width,1188px);max-width:calc(100vw - 36px);background:#111519;border:2px solid #e9c916;border-radius:14px;overflow:hidden;box-shadow:0 12px 26px #0005;transform:scale(var(--scale,1));transform-origin:center center}.top{background:#e9c916;color:#050505;padding:22px 27px;display:flex;justify-content:space-between;align-items:center;font-weight:900;gap:18px}.title{font-size:36px;line-height:1.12}.season{font-size:19px;white-space:nowrap}.table{width:100%;border-collapse:collapse;table-layout:fixed}.table th{background:#192329;color:#e9c916;font-size:20px;padding:13px 7px}.table td{padding:12px 8px;text-align:center;font-weight:700;border-bottom:1px solid #303b42;font-size:19px}.table tbody tr:nth-child(even){background:#1a2228}.table td.team{text-align:left;padding-left:18px;padding-right:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.table td.rank{width:5%}.foot{display:flex;justify-content:space-between;padding:10px 15px;color:#8fa2b0;font-size:15px;border-top:1px solid #303b42}.error{color:#ff7181;padding:22px;text-align:center}.hidden{display:none}@media(max-width:720px){body{padding:8px}.wrap{max-width:calc(100vw - 16px)}.top{padding:16px 18px}.title{font-size:clamp(20px,4vw,36px)}.season{font-size:15px}.table th{font-size:14px;padding:9px 3px}.table td{font-size:14px;padding:9px 3px}.table td.team{padding-left:9px}.foot{font-size:12px}}
-</style></head><body><div class="wrap" id="wrap"><div class="top"><div class="title" id="title">AVOIN MESTARUUS – SARJATAULUKKO</div><div class="season" id="season">2026–27</div></div><div id="tables"></div><div class="foot"><span id="status">Kisailu.net</span><span>KISAILU.NET</span></div></div>
+*{box-sizing:border-box}html,body{width:100%;min-height:100%;margin:0}body{min-height:100vh;background:transparent;font-family:Arial,Helvetica,sans-serif;color:#fff;display:flex;align-items:center;justify-content:center;padding:18px;overflow-y:auto}.wrap{width:var(--width,1188px);max-width:calc(100vw - 36px);background:#111519;border:2px solid #e9c916;border-radius:14px;overflow:hidden;box-shadow:0 12px 26px #0005;transform:scale(var(--scale,1));transform-origin:center center}.top{background:#e9c916;color:#050505;padding:22px 27px;display:flex;justify-content:space-between;align-items:center;font-weight:900;gap:18px}.title{font-size:36px;line-height:1.12}.season{font-size:19px;white-space:nowrap}.groups{display:flex;flex-direction:column;gap:14px}.group{width:100%;border-top:2px solid #e9c916}.group-title{background:#263239;color:#e9c916;font-weight:900;font-size:20px;letter-spacing:.4px;padding:10px 20px;text-align:left}.loading{padding:22px;text-align:center;font-weight:700}.table{width:100%;border-collapse:collapse;table-layout:fixed}.table th{background:#192329;color:#e9c916;font-size:20px;padding:13px 7px}.table td{padding:12px 8px;text-align:center;font-weight:700;border-bottom:1px solid #303b42;font-size:19px}.table tbody tr:nth-child(even){background:#1a2228}.table td.team{text-align:left;padding-left:18px;padding-right:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.table td.rank{width:5%}.foot{display:flex;justify-content:space-between;padding:10px 15px;color:#8fa2b0;font-size:15px;border-top:1px solid #303b42}.error{color:#ff7181;padding:22px;text-align:center}.hidden{display:none}@media(max-width:720px){body{padding:8px}.wrap{max-width:calc(100vw - 16px)}.top{padding:16px 18px}.title{font-size:clamp(20px,4vw,36px)}.season{font-size:15px}.table th{font-size:14px;padding:9px 3px}.table td{font-size:14px;padding:9px 3px}.table td.team{padding-left:9px}.foot{font-size:12px}}
+</style></head><body><div class="wrap" id="wrap"><div class="top"><div class="title" id="title">AVOIN MESTARUUS – SARJATAULUKKO</div><div class="season" id="season">2026–27</div></div><div id="groupTables" class="groups"><div class="loading">Ladataan…</div></div><div class="foot"><span id="status">Kisailu.net</span><span>KISAILU.NET</span></div></div>
 <script>
-const p=new URLSearchParams(location.search);const category=p.get('sarja')||'MM';const seasonId=p.get('season')||'SEA#sdlsml202627';const refresh=Math.max(5,Number(p.get('refresh')||30))*1000;const scale=Number(p.get('scale')||100);const width=Number(p.get('width')||1188);const right=p.get('right');const bottom=p.get('bottom');
+const p=new URLSearchParams(location.search);const category=p.get('sarja')||'MM';const seasonId=p.get('season')||'SEA#sdlsml202627';const refresh=Math.max(5,Number(p.get('refresh')||30))*1000;const scale=Number(p.get('scale')||100);const width=Number(p.get('width')||1188);const right=p.get('right');const bottom=p.get('bottom'); // Lohkon voi rajata parametrilla lohko=1; oletus all näyttää kaikki lohkot.
 document.documentElement.style.setProperty('--width',width+'px');document.documentElement.style.setProperty('--scale',String(scale/100));if(right!==null||bottom!==null){document.body.style.position='absolute';document.body.style.left='auto';document.body.style.top='auto';document.body.style.display='block';const wrap=document.getElementById('wrap');wrap.style.position='absolute';if(right!==null)wrap.style.right=right+'px';if(bottom!==null)wrap.style.bottom=bottom+'px'}
 const labels={MM:'AVOIN MESTARUUS',M1:'AVOIN 1DIV',M2:'AVOIN 2DIV',M3:'AVOIN 3DIV',NM:'NAISTEN MESTARUUS',N1:'NAISTEN 1DIV'};document.getElementById('title').textContent=(labels[category]||category)+' – SARJATAULUKKO';document.getElementById('season').textContent=p.get('seasonLabel')||'2026–27';
 function arrFrom(x){if(Array.isArray(x))return x;if(x&&typeof x==='object'){for(const k of ['Teams','teams','Items','items','Data','data','body','Results','results'])if(Array.isArray(x[k]))return x[k];for(const v of Object.values(x)){const a=arrFrom(v);if(a.length)return a}}return []}
@@ -12,19 +12,39 @@ function eventDetails(o){return o?.EventDetails||o?.eventDetails||{}}
 function stat(o){const ed=eventDetails(o);return ed.Stat||ed.stat||o?.Stat||o?.stat||{}}
 function teamName(o){const ed=eventDetails(o);return ed.Name||ed.Team||o?.Team||o?.Name||'?'}
 function avg(o){const st=stat(o),td=num(st.TD);return td>0?((num(st.TP)/td)*3).toFixed(2):'-'}
-const tableShell=rows=>`<table class="table"><colgroup><col style="width:5%"><col style="width:28%"><col style="width:7%"><col style="width:6%"><col style="width:6%"><col style="width:6%"><col style="width:15%"><col style="width:15%"><col style="width:12%"></colgroup><thead><tr><th>#</th><th style="text-align:left">Joukkue</th><th>Ott.</th><th>V</th><th>T</th><th>H</th><th>Pelisuhde</th><th>3 tikan ka.</th><th>Pisteet</th></tr></thead><tbody>${rows}</tbody></table>`;\nasync function load(){try{
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function groupNumber(o){const ed=eventDetails(o);const v=ed.Group??o?.Group??0;const n=Number(v);return Number.isFinite(n)?n:0}
+function tableForGroup(rows, groupNo, showHeading){
+ const heading=showHeading?`<div class="group-title">LOHKO ${esc(groupNo)}</div>`:'';
+ const body=rows.map((o,i)=>{
+  const st=stat(o),rank=st.R??i+1;
+  return `<tr><td class="rank">${esc(rank)}</td><td class="team" title="${esc(teamName(o))}">${esc(teamName(o))}</td><td>${esc(st.NG??'-')}</td><td>${esc(st.W??'-')}</td><td>${esc(st.T??'-')}</td><td>${esc(st.L??'-')}</td><td>${ratio(st.RW,st.RL)}</td><td>${avg(o)}</td><td>${esc(st.PTS??'-')}</td></tr>`;
+ }).join('');
+ return `<section class="group">${heading}<table class="table"><colgroup><col style="width:5%"><col style="width:28%"><col style="width:7%"><col style="width:6%"><col style="width:6%"><col style="width:6%"><col style="width:15%"><col style="width:15%"><col style="width:12%"></colgroup><thead><tr><th>#</th><th style="text-align:left">Joukkue</th><th>Ott.</th><th>V</th><th>T</th><th>H</th><th>Pelisuhde</th><th>3 tikan ka.</th><th>Pisteet</th></tr></thead><tbody>${body}</tbody></table></section>`;
+}
+async function load(){try{
  const r=await fetch('/api/teams',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({SeasonId:seasonId,OrganizationId:'ORG#937795',TeamType:'SmLiiga',Active:true})});
  if(!r.ok)throw new Error('HTTP '+r.status);
  const raw=await r.json();let list=arrFrom(raw);
  if(!list.length)throw new Error('API-vastaus ei sisältänyt joukkue-listaa');
  list=list.filter(x=>String(x.Data||eventDetails(x).Level||'')===category);
- list.sort((a,b)=>num(stat(a).R)-num(stat(b).R));
  if(!list.length)throw new Error('Sarjasta '+category+' ei löytynyt joukkueita');
- document.getElementById('rows').innerHTML=list.map((o,i)=>{
-  const st=stat(o),rank=st.R??i+1;
-  return `<tr><td class="rank">${rank}</td><td class="team">${teamName(o)}</td><td>${st.NG??'-'}</td><td>${st.W??'-'}</td><td>${st.T??'-'}</td><td>${st.L??'-'}</td><td>${ratio(st.RW,st.RL)}</td><td>${avg(o)}</td><td>${st.PTS??'-'}</td></tr>`;
- }).join('');
+ const grouped=new Map();
+ for(const item of list){const g=groupNumber(item);if(!grouped.has(g))grouped.set(g,[]);grouped.get(g).push(item)}
+ let groupNumbers=Array.from(grouped.keys()).sort((a,b)=>a-b);
+ const requestedGroup=p.get('lohko')||'all';
+ if(requestedGroup.toLowerCase()!=='all'){
+  const wanted=Number(requestedGroup);
+  if(!Number.isFinite(wanted)||!grouped.has(wanted))throw new Error('Lohkoa '+requestedGroup+' ei löytynyt sarjasta '+category);
+  groupNumbers=[wanted];
+ }
+ for(const g of groupNumbers)grouped.get(g).sort((a,b)=>num(stat(a).R)-num(stat(b).R));
+ const showHeadings=groupNumbers.length>1||groupNumbers[0]!==0;
+ document.getElementById('title').textContent=(labels[category]||category)+' – '+(groupNumbers.length>1?'SARJATAULUKOT':'SARJATAULUKKO');
+ document.getElementById('groupTables').innerHTML=groupNumbers.map(g=>tableForGroup(grouped.get(g),g,showHeadings)).join('');
+ // Keep a compact single-group overlay vertically centered, but anchor long multi-group tables at the top.
+ requestAnimationFrame(()=>{const wrap=document.getElementById('wrap');document.body.style.alignItems=wrap.getBoundingClientRect().height>window.innerHeight?'flex-start':'center'});
  document.getElementById('status').textContent='Päivitetty '+new Date().toLocaleTimeString('fi-FI');
- }catch(e){document.getElementById('tables').innerHTML=`<div class="error">Tietojen haku epäonnistui: ${e.message}</div>`;document.getElementById('status').textContent='Virhe'}}
+ }catch(e){document.getElementById('groupTables').innerHTML=`<div class="error">Tietojen haku epäonnistui: ${esc(e.message)}</div>`;document.getElementById('status').textContent='Virhe'}}
 load();setInterval(load,refresh);
 </script></body></html>

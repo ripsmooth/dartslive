@@ -1,8 +1,30 @@
 <!doctype html><html lang="fi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Darts TV – ohjauspaneeli</title><style>
 *{box-sizing:border-box}body{margin:0;background:#10191e;color:#f5f7f8;font:15px Arial,sans-serif}.wrap{max-width:760px;margin:24px auto;padding:20px}.card{background:#f2f5f6;color:#121a1e;border-radius:12px;padding:20px;box-shadow:0 8px 30px #0003}h1{margin:0 0 6px;font-size:25px}.overlayLink{display:inline-block;padding:9px 12px;background:#ffe500;color:#10191e;text-decoration:none;font-weight:bold;border-radius:6px}p{color:#46535a;line-height:1.45}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}label{display:block;font-size:13px;font-weight:bold;margin:13px 0 5px}input,select{width:100%;padding:11px;border:1px solid #aeb9be;border-radius:6px;font-size:15px;background:white;color:#111}button{border:0;border-radius:6px;padding:12px 15px;background:#111c22;color:white;font-weight:bold;cursor:pointer;margin-top:14px}button.secondary{background:#d8e0e3;color:#10191e}#status{margin-top:14px;padding:10px;background:#e3eaed;border-radius:6px;white-space:pre-wrap}.wide{width:100%}.small{font-size:12px;color:#536168}@media(max-width:600px){.wrap{padding:10px;margin:0}.grid{grid-template-columns:1fr}.card{padding:15px}}
+
+.panelSep{border:0;border-top:1px solid #d2dadd;margin:24px 0 18px}.panelTitle{font-size:18px;font-weight:900;letter-spacing:.4px;margin:0 0 5px;color:#111c22}.hint{font-size:12px;color:#536168;line-height:1.4;margin:5px 0 12px}.actionRow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actionRow button{width:100%}.linkPreview{font-size:12px;color:#36454d;background:#e8edef;padding:9px;border-radius:6px;word-break:break-all;margin-top:10px}.standingsStatus{font-size:12px;color:#536168;margin-top:8px;white-space:pre-wrap}@media(max-width:600px){.actionRow{grid-template-columns:1fr}}
 </style></head><body><div class="wrap"><div class="card"><h1>Darts TV · Ohjauspaneeli</h1><p><a class="overlayLink" href="darts-tv-overlay.html?controls=0" target="_blank" rel="noopener">Avaa overlay-sivu ↗</a></p><p>Valitse kilpailu ja ottelu tällä laitteella. OBS-overlay lukee valinnan GitHub JSON -tiedostosta. Tulostiedot haetaan erikseen Kisailu.netistä kahden sekunnin välein.</p>
 <label for="token">Ohjaustunnus</label><input id="token" type="password" autocomplete="current-password" placeholder="Vercelin DARTS_CONTROL_TOKEN"><div class="grid"><div><label for="date">Päivä</label><input id="date" type="date"></div><div><label>&nbsp;</label><button id="load" class="wide">Hae kilpailut</button></div></div>
-<label for="event">Kilpailu / sarja</label><select id="event"><option value="">Hae ensin kilpailut</option></select><label for="displayTitle">Tulostaulussa näkyvä kilpailun nimi (valinnainen)</label><input id="displayTitle" maxlength="64" placeholder="Tyhjä = Kisailun alkuperäinen nimi"><label for="statsLabel">Tulostaulun tilasto-otsikko (vapaa teksti)</label><input id="statsLabel" maxlength="32" value="TILASTOT" placeholder="Esim. OTTELUN TILASTOT"><label for="match">Ottelu</label><select id="match"><option value="auto">Automaattinen: käynnissä oleva</option></select><div class="grid"><button id="save">Tallenna valinta</button><button id="refresh" class="secondary">Päivitä ottelulista</button></div><div id="status">Valitse päivä ja hae kilpailut.</div><p class="small">Ohjaustunnus tallentuu vain tämän välilehden istuntoon. Älä jaa sitä muille.</p></div></div>
+<label for="event">Kilpailu / sarja</label><select id="event"><option value="">Hae ensin kilpailut</option></select><label for="displayTitle">Tulostaulussa näkyvä kilpailun nimi (valinnainen)</label><input id="displayTitle" maxlength="64" placeholder="Tyhjä = Kisailun alkuperäinen nimi"><label for="statsLabel">Tulostaulun tilasto-otsikko (vapaa teksti)</label><input id="statsLabel" maxlength="32" value="TILASTOT" placeholder="Esim. OTTELUN TILASTOT"><label for="match">Ottelu</label><select id="match"><option value="auto">Automaattinen: käynnissä oleva</option></select><div class="grid"><button id="save">Tallenna valinta</button><button id="refresh" class="secondary">Päivitä ottelulista</button></div><div id="status">Valitse päivä ja hae kilpailut.</div><p class="small">Ohjaustunnus tallentuu vain tämän välilehden istuntoon. Älä jaa sitä muille.</p>
+<hr class="panelSep">
+<section aria-labelledby="standingsHeading">
+<h2 class="panelTitle" id="standingsHeading">Sarjataulukon ohjaus</h2>
+<p class="hint">Valitse sarjataso ja lohko. Ohjauspaneeli muodostaa OBS-selaimelle suoran osoitteen. Nykyisen ottelutulostaulun valinnat eivät muutu tästä.</p>
+<div class="grid">
+ <div><label for="standingsCategory">Sarja</label><select id="standingsCategory"><option value="MM">Avoin mestaruus</option><option value="M1">Avoin 1. divisioona</option><option value="M2">Avoin 2. divisioona</option><option value="M3">Avoin 3. divisioona</option><option value="NM">Naisten mestaruus</option><option value="N1">Naisten 1. divisioona</option></select></div>
+ <div><label for="standingsGroup">Lohko</label><select id="standingsGroup"><option value="all">Kaikki lohkot</option></select></div>
+ <div><label for="standingsWidth">Leveys (px)</label><input id="standingsWidth" type="number" min="400" max="2400" step="10" value="1188"></div>
+ <div><label for="standingsScale">Koko (%)</label><input id="standingsScale" type="number" min="50" max="200" step="5" value="100"></div>
+ <div><label for="standingsRefresh">Päivitysväli (sekuntia)</label><input id="standingsRefresh" type="number" min="5" max="300" step="5" value="30"></div>
+ <div><label>&nbsp;</label><button id="reloadStandingsGroups" class="secondary wide" type="button">Päivitä lohkolista</button></div>
+</div>
+<div class="actionRow">
+ <button id="openStandings" type="button">Avaa sarjataulukko</button>
+ <button id="copyStandings" class="secondary" type="button">Kopioi OBS-osoite</button>
+</div>
+<div id="standingsUrl" class="linkPreview">Osoite muodostetaan valintojen perusteella.</div>
+<div id="standingsStatus" class="standingsStatus">Haetaan valitun sarjan lohkoja…</div>
+</section>
+</div></div>
 <script>
 const $=id=>document.getElementById(id);let events=[],games=[],playerNames={};const localDate=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};$('date').value=localDate();$('token').value=sessionStorage.getItem('dartsControlToken')||'';
 const evId=e=>String(e?.Id??e?.id??'');const evTitle=e=>String(e?.Title??e?.title??e?.Name??e?.name??evId(e));const decodeGame=item=>{const raw=item?.GameData;if(typeof raw!=='string')return raw||item;const id=String(item.Id??item.id??'');try{const bytes=new Uint8Array(raw.match(/.{2}/g).map(x=>parseInt(x,16)));const out=new Uint8Array(bytes.length);for(let i=0;i<bytes.length;i++)out[i]=bytes[i]^id.charCodeAt(i%id.length);return JSON.parse(new TextDecoder().decode(out))}catch(e){return {}}};const norm=x=>{const d=decodeGame(x);return {...d,apiId:x.Id??x.id??d.Id??d.GameId??d.GameID}};
@@ -24,4 +46,37 @@ let playingCount=0;for(const {g,gid} of matchRows){const names=(g.players||[]).m
 }catch(e){$('status').textContent=e.message+' Ottelulista säilytetään välimuistissa, jos aiempia tietoja on.'}}
 async function save(){const token=$('token').value.trim();if(!token){$('status').textContent='Syötä Vercelin DARTS_CONTROL_TOKEN.';return}sessionStorage.setItem('dartsControlToken',token);const id=$('event').value,ev=events.find(e=>evId(e)===id);if(!id){$('status').textContent='Valitse kilpailu.';return}const body={date:$('date').value,eventId:id,eventTitle:evTitle(ev||{Title:id}),displayTitle:$('displayTitle').value.trim().slice(0,64),matchId:$('match').value||'auto',statsLabel:$('statsLabel').value.trim().slice(0,32)||'TILASTOT'};try{$('status').textContent='Tallennetaan GitHub JSON -tiedostoon…';const r=await fetch('/api/state',{method:'POST',headers:{'content-type':'application/json','x-darts-control-token':token},body:JSON.stringify(body)});const d=await r.json();if(!r.ok)throw Error(d.error||`Tallennus HTTP ${r.status}`);$('status').textContent='Tallennettu '+d.state.updatedAt+'. Overlay huomaa valinnan yleensä muutamassa sekunnissa.'}catch(e){$('status').textContent=e.message}}
 $('load').onclick=loadEvents;$('date').onchange=loadEvents;$('event').onchange=()=>{$('displayTitle').value='';loadGames()};$('refresh').onclick=loadGames;$('save').onclick=save;$('match').onchange=()=>{};
+
+// Sarjataulukon erillinen ohjaus: ei muuta ottelutulostaulun tallennusta.
+const standingsLabels={MM:'Avoin mestaruus',M1:'Avoin 1. divisioona',M2:'Avoin 2. divisioona',M3:'Avoin 3. divisioona',NM:'Naisten mestaruus',N1:'Naisten 1. divisioona'};
+function standingsDetails(o){return o?.EventDetails||o?.eventDetails||{}}
+function standingsArray(x){if(Array.isArray(x))return x;if(x&&typeof x==='object'){for(const k of ['Teams','teams','Items','items','Data','data','body','Results','results'])if(Array.isArray(x[k]))return x[k];for(const v of Object.values(x)){const a=standingsArray(v);if(a.length)return a}}return []}
+function standingsGroupNo(o){const ed=standingsDetails(o);const v=ed.Group??o?.Group??0;const n=Number(v);return Number.isFinite(n)?n:0}
+async function loadStandingsGroups(){
+ const category=$('standingsCategory').value,select=$('standingsGroup'),status=$('standingsStatus');
+ const previous=select.value||'all';select.innerHTML='';select.add(new Option('Kaikki lohkot','all'));status.textContent='Haetaan '+(standingsLabels[category]||category)+'-sarjan lohkoja…';
+ try{
+  const response=await fetch('/api/teams',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({SeasonId:'SEA#sdlsml202627',OrganizationId:'ORG#937795',TeamType:'SmLiiga',Active:true}),cache:'no-store'});
+  if(!response.ok)throw Error('API-haku HTTP '+response.status);
+  const raw=await response.json(),rows=standingsArray(raw).filter(o=>String(o.Data||standingsDetails(o).Level||'')===category);
+  const groups=new Map();for(const row of rows){const g=standingsGroupNo(row);groups.set(g,(groups.get(g)||0)+1)}
+  [...groups.entries()].sort((a,b)=>a[0]-b[0]).forEach(([g,count])=>select.add(new Option('Lohko '+g+' ('+count+' joukkuetta)',String(g))));
+  if([...select.options].some(o=>o.value===previous))select.value=previous;
+  status.textContent=rows.length?`Löytyi ${rows.length} joukkuetta ja ${groups.size} lohkoa. Oletuksena näytetään kaikki lohkot erillisinä taulukoina.`:`Sarjasta ${category} ei löytynyt joukkueita.`;
+ }catch(err){status.textContent='Lohkolistan haku epäonnistui: '+err.message+'\nKaikki lohkot -valinta toimii silti, jos API on hetkellisesti poissa käytöstä.'}
+ updateStandingsUrl();
+}
+function makeStandingsUrl(){
+ const q=new URLSearchParams();q.set('sarja',$('standingsCategory').value);q.set('lohko',$('standingsGroup').value||'all');
+ const width=Math.max(400,Math.min(2400,Number($('standingsWidth').value)||1188));
+ const scale=Math.max(50,Math.min(200,Number($('standingsScale').value)||100));
+ const refresh=Math.max(5,Math.min(300,Number($('standingsRefresh').value)||30));
+ q.set('width',String(width));q.set('scale',String(scale));q.set('refresh',String(refresh));
+ return new URL('darts-tv-sarjataulukko.html?'+q.toString(),location.href).href;
+}
+function updateStandingsUrl(){$('standingsUrl').textContent=makeStandingsUrl()}
+$('standingsCategory').addEventListener('change',loadStandingsGroups);$('standingsGroup').addEventListener('change',updateStandingsUrl);$('reloadStandingsGroups').addEventListener('click',loadStandingsGroups);['standingsWidth','standingsScale','standingsRefresh'].forEach(id=>$(id).addEventListener('input',updateStandingsUrl));
+$('openStandings').addEventListener('click',()=>{const url=makeStandingsUrl();window.open(url,'_blank','noopener');$('standingsStatus').textContent='Sarjataulukko avattiin uuteen välilehteen. Sama osoite toimii OBS Browser Source -lähteen URL-osoitteena.'});
+$('copyStandings').addEventListener('click',async()=>{const url=makeStandingsUrl();try{await navigator.clipboard.writeText(url);$('standingsStatus').textContent='OBS-osoite kopioitu leikepöydälle: '+url}catch(e){$('standingsStatus').textContent='Kopiointi ei onnistunut tässä selaimessa. Kopioi osoite alla olevasta kentästä.'}});
+loadStandingsGroups();
 </script></body></html>
