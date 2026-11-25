@@ -78,3 +78,12 @@ OTTELUN LOPPUTULOKSEN SÄILYTTÄMINEN
 - Kun ottelu päättyy (EndTime tai status 4) tai automaattitilassa ottelu katoaa onnistuneesta Kisailu-haun vastauksesta, tulostaulu säilyttää viimeisimmän tilanteen ja näyttää tunnisteen LOPPUTULOS.
 - Lopputulos pysyy näkyvissä, kunnes Kisailu ilmoittaa uuden käynnissä olevan ottelun (status 2). Sen jälkeen tulostaulu vaihtuu automaattisesti uuteen otteluun.
 - Jos Kisailu-haku epäonnistuu hetkellisesti, viimeisin tulostaulu säilytetään tyhjentämisen sijaan.
+
+
+SARJATAULUKON ULKOASUN PÄIVITYS
+- Oletusleveys 1188 px (noin 20 % aiempaa suurempi)
+- Sarjataulukko keskitetään selain-/OBS-näkymään sekä vaaka- että pystysuunnassa
+- Joukkue-sarakkeelle varattu 28 % taulukon leveydestä
+- Heitto ka. näytetään kolmen tikan keskiarvona: (TP / TD) * 3
+- Oletusfontteja ja rivikorkeutta suurennettu noin 20 %
+- URL-parametrit scale, width, refresh sekä sarja ja season säilyvät käytössä
